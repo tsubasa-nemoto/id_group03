@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
+ <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="form-wrapper">
@@ -12,7 +13,7 @@
   <form action="/login" method="post">
     <div class="form-id">
       <label for="email"></label>
-      <input type="email" name="email" required="required" placeholder="Email Address"></input>
+      <input type="text" name="email" required="required" placeholder="Email Address"></input>
     </div>
 
     <div class="form-id">
@@ -26,6 +27,7 @@
     <br>
     <span th:text="${message}" style="color:red"></span>
   </form>
+
   <div class="form-footer">
     <p><a href="">新規会員登録</a></p>
     <p><a href="">パスワードを忘れた方</a></p>

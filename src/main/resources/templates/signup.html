@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>新規会員登録</title>
+ <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="form-wrapper">
@@ -10,9 +11,14 @@
   <h1>Sign in</h1>
 
   <form action="/signin" method="post">
+	<div class="form-id">
+      <label for="name"></label>
+      <input type="text" name="name" required="required" placeholder="Name"></input>
+    </div>
+
     <div class="form-id">
       <label for="email"></label>
-      <input type="email" name="email" required="required" placeholder="Email Address"></input>
+      <input type="text" name="email" required="required" placeholder="Email Address"></input>
     </div>
 
     <div class="form-id">
