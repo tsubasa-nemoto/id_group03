@@ -13,7 +13,7 @@
   <form action="/login" method="post">
     <div class="form-id">
       <label for="email"></label>
-      <input type="text" name="email" required="required" placeholder="Email Address"></input>
+      <input type="text" name="email" required="required" placeholder="Email Address" th:value="${mail}"></input>
     </div>
 
     <div class="form-id">
@@ -29,7 +29,7 @@
   </form>
 
   <div class="form-footer">
-    <p><a href="">新規会員登録</a></p>
+    <p><a href="/signup">新規会員登録</a></p>
     <p><a href="">パスワードを忘れた方</a></p>
   </div>
 </div>
