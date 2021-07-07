@@ -73,7 +73,7 @@ form {
 .button-panel .button {
   background: #f7e880;
   border: none;
-  color: #fff;
+  color: rgb(0,0,0);
   cursor: pointer;/*リンクポインタに指定*/
   height: 50px;
   font-family: 'Open Sans', sans-serif;/*フォント*/
@@ -86,7 +86,7 @@ form {
 }
 
 .button:hover {
-  background: #ee3e52;
+  background: rgb(255, 128, 64);
 }
 
 .form-footer {
