@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -103,7 +104,20 @@ public class AccountController {
 			@RequestParam("name") String name,
 			@RequestParam("email") String mail,
 			@RequestParam("password") String password) {
+		ArrayList<Users> users= (ArrayList<Users>)usersRepository.findAll();
+		for (  Users u:users) {
+			if (u.getEmail().equals(mail)) {//USERSに含まれるidと一致するものの検索
+				String mes = "登録済みのメールアドレスです";
+				mv.addObject("message",mes );
+			mv.setViewName("singup");
+			}else {
+				Users user = new Users(name,mail,password);
+			usersRepository.saveAndFlush(user);
+				mv.setViewName("/login");
+			}
+			return mv;
 
+		}
 		return mv;
 	}
 }
