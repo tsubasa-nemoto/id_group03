@@ -5,6 +5,27 @@
 <title>新規会員登録</title>
 </head>
 <body>
+<div class="form-wrapper">
 
+  <h1>Sign in</h1>
+
+  <form action="/signin" method="post">
+    <div class="form-id">
+      <label for="email"></label>
+      <input type="email" name="email" required="required" placeholder="Email Address"></input>
+    </div>
+
+    <div class="form-id">
+      <label for="password"></label>
+      <input type="password" name="password" required="required" placeholder="Password"></input>
+    </div>
+
+    <div class="button-panel">
+      <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+    </div>
+    <br>
+    <span th:text="${message}" style="color:red"></span>
+  </form>
+</div>
 </body>
 </html>
