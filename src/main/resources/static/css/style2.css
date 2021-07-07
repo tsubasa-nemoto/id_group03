@@ -1,0 +1,18 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+
+/* fontawesome */
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+.main {
+  background: #f9f9f9;
+  color: #5e5e5e;
+  font: 400 1000%/15em 'Open Sans', sans-serif;
+}
+#HD {
+  text-align: center;
+  padding: 1em 0;/*上下左右の幅*/
+}
