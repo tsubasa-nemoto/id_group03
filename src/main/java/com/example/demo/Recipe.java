@@ -8,7 +8,11 @@ import javax.persistence.Id;
 public class Recipe {
 	//フィールド
 	@Id
+	private int code;
 	private String dish;
+	private String recipe;
+	private String review;
+
 
 	//コンストラクタ
 	public Recipe() {
