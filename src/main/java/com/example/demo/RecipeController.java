@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 @Controller
 public class RecipeController {
 
@@ -41,7 +40,7 @@ public class RecipeController {
 		mv.addObject("search", dish);//テキストボックスに保持(menu.htmlのth:valueで格納するキーをつくる)
 
 
-		mv.setViewName("recipeList");//list.htmlで表示
+		//mv.setViewName("recipeList");//list.htmlで表示
 
 		return mv;
 	}
