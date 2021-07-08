@@ -74,7 +74,7 @@ public class AccountController {
 					mv.setViewName("login");
 
 				}
-			}else {
+			} else {
 				mv.addObject("message", "メールアドレスが登録されていません");
 				mv.setViewName("login");
 
@@ -104,15 +104,15 @@ public class AccountController {
 			@RequestParam("name") String name,
 			@RequestParam("email") String mail,
 			@RequestParam("password") String password) {
-		ArrayList<Users> users= (ArrayList<Users>)usersRepository.findAll();
-		for (  Users u:users) {
+		ArrayList<Users> users = (ArrayList<Users>) usersRepository.findAll();
+		for (Users u : users) {
 			if (u.getEmail().equals(mail)) {//USERSに含まれるidと一致するものの検索
 				String mes = "登録済みのメールアドレスです";
-				mv.addObject("message",mes );
-			mv.setViewName("singup");
-			}else {
-				Users user = new Users(name,mail,password);
-			usersRepository.saveAndFlush(user);
+				mv.addObject("message", mes);
+				mv.setViewName("singup");
+			} else {
+				Users user = new Users(name, mail, password);
+				usersRepository.saveAndFlush(user);
 				mv.setViewName("/login");
 			}
 			return mv;
@@ -120,4 +120,80 @@ public class AccountController {
 		}
 		return mv;
 	}
+
+	@RequestMapping("/password")
+	public ModelAndView d(ModelAndView mv) {
+		mv.setViewName("password");
+		return mv;
+	}
+
+	@PostMapping("/password")
+	public ModelAndView pass(ModelAndView mv,
+			@RequestParam("name") String name,
+			@RequestParam("email") String mail) {
+		ArrayList<Users> users = (ArrayList<Users>) usersRepository.findAll();
+		for (Users u : users) {
+			if (u.getEmail().equals(mail)) {
+				if (u.getName().equals(name)) {
+					//ユーザーの名前とアドレスが一致したらパスワードの再登録画面へ
+					String tMail = u.getEmail();
+					String tName = u.getName();
+					session.setAttribute("mail", tMail);
+					session.setAttribute("name", tName);
+					//セッションスコープに名前とアドレスを保持
+					mv.setViewName("rePass");
+					return mv;
+				} else {
+					mv.addObject("message", "メールアドレスまたは名前が違います。");
+					mv.setViewName("/password");
+					return mv;
+				}
+			}
+//			else {
+//				mv.addObject("message", "メールアドレスが違います。");
+//				mv.setViewName("/password");
+//				return mv;
+//			}
+		}
+		return mv;
+	}
+
+	@PostMapping("/repass")
+	public ModelAndView repass(ModelAndView mv,
+			@RequestParam("pass1") String pass1,
+			@RequestParam("pass2") String pass2) {
+		if (pass1.equals(pass2)) {//passwordに間違いがないか確認
+			String name = (String) session.getAttribute("name");
+			String mail = (String) session.getAttribute("mail");
+			Optional<Users> record = usersRepository.findByEmail(mail);
+	//重複しないであろうアドレスでcodeを呼び出すための操作
+			Users user=record.get();
+			int code=user.getCode();
+			Users reuser = new Users(code,name, mail, pass1);
+			usersRepository.saveAndFlush(reuser);
+			mv.addObject("message","パスワードの再登録が完了しました。");
+			mv.setViewName("login");
+		}else {
+			mv.addObject("message", "パスワードが一致しません。");
+			mv.setViewName("rePass");
+		}
+		return mv;
+	}
+
+	@RequestMapping("/test")
+//	@Configuration
+//	public class WebConfig implements WebMvcConfigurer {
+//		 public void addResourceHandlers(ResourceHandlerRegistry registry) {
+////		        registry.addResourceHandler("/images/**")
+////		                .addResourceLocations("/images/");
+//		        registry.addResourceHandler("/images/**")
+//		        .addResourceLocations("file:///F:\\capybara\\");
+//		    }
+//	}
+	public ModelAndView test(ModelAndView mv) {
+	mv.addObject("URL","pancake.jpg");
+		mv.setViewName("TEST01");
+	return mv;
+	}
+
 }
