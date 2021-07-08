@@ -64,7 +64,7 @@ public class AccountController {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
 					//session.setAttribute("categories", categoryRepository.findAll());
-
+					mv.addObject("URL","pancake.jpg");
 					mv.setViewName("top");
 					return mv;
 				}
