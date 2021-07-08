@@ -17,6 +17,46 @@ header {
 	background: #f7e880;
 }
 
+/*検索フォームcss*/
+
+#form4{
+position:relative;
+max-width:300px;
+margin-bottom:20px;
+}
+#sbox4{
+height:50px;
+padding:0 10px;
+position:absolute;
+left:0;
+top:0;
+border-radius:25px;
+outline:0;
+background:#eee;
+}
+#sbtn4{
+height:50px;
+width:50px;
+position:absolute;
+left:250px;
+top:0;
+background :#eee ;
+color:#fff;
+border:none;
+border-radius:0 25px 25px 0;
+}
+#sbtn4 .fa-search{
+font-size:20px;
+position:absolute;
+top:30%;
+left:30%;
+}
+#sbtn4:hover{
+color:#888;
+}
+
+
+/*ハンバーガーメニューcss*/
 /* header（デモの参考値） */
 .demobox-header{
 background: #ddd;
@@ -131,6 +171,13 @@ font-size: 18px;
 	height:500px;
   	background: #ffffff;
 
+}
+
+h1 {
+	text-align: center;
+  	padding: 1em 0;/*上下左右の幅*/
+  	font-family: 'Open Sans', sans-serif;/*フォント*/
+  	font-size: 7em;
 }
 
 .main2 {
