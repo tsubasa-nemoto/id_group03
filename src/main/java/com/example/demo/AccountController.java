@@ -64,9 +64,7 @@ public class AccountController {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
 					//session.setAttribute("categories", categoryRepository.findAll());
-					mv.addObject("URL","pancake.jpg");
-					mv.setViewName("top");
-					return mv;
+					return top(mv);
 				}
 				// 空の場合にエラーとする
 				else {
@@ -149,11 +147,11 @@ public class AccountController {
 					return mv;
 				}
 			}
-//			else {
-//				mv.addObject("message", "メールアドレスが違います。");
-//				mv.setViewName("/password");
-//				return mv;
-//			}
+			//			else {
+			//				mv.addObject("message", "メールアドレスが違います。");
+			//				mv.setViewName("/password");
+			//				return mv;
+			//			}
 		}
 		return mv;
 	}
@@ -166,34 +164,34 @@ public class AccountController {
 			String name = (String) session.getAttribute("name");
 			String mail = (String) session.getAttribute("mail");
 			Optional<Users> record = usersRepository.findByEmail(mail);
-	//重複しないであろうアドレスでcodeを呼び出すための操作
-			Users user=record.get();
-			int code=user.getCode();
-			Users reuser = new Users(code,name, mail, pass1);
+			//重複しないであろうアドレスでcodeを呼び出すための操作
+			Users user = record.get();
+			int code = user.getCode();
+			Users reuser = new Users(code, name, mail, pass1);
 			usersRepository.saveAndFlush(reuser);
-			mv.addObject("message","パスワードの再登録が完了しました。");
+			mv.addObject("message", "パスワードの再登録が完了しました。");
 			mv.setViewName("login");
-		}else {
+		} else {
 			mv.addObject("message", "パスワードが一致しません。");
 			mv.setViewName("rePass");
 		}
 		return mv;
 	}
 
-	@RequestMapping("/test")
-//	@Configuration
-//	public class WebConfig implements WebMvcConfigurer {
-//		 public void addResourceHandlers(ResourceHandlerRegistry registry) {
-////		        registry.addResourceHandler("/images/**")
-////		                .addResourceLocations("/images/");
-//		        registry.addResourceHandler("/images/**")
-//		        .addResourceLocations("file:///F:\\capybara\\");
-//		    }
-//	}
-	public ModelAndView test(ModelAndView mv) {
-	mv.addObject("URL","pancake.jpg");
-		mv.setViewName("TEST01");
-	return mv;
+	@RequestMapping("/main")
+	public ModelAndView top(ModelAndView mv) {
+		session.setAttribute("URL1", "pancake.jpg");
+		session.setAttribute("URL2", "lime-juice.jpg");
+		session.setAttribute("URL3", "pumpkin-soup.jpg");
+		session.setAttribute("URL4", "small-salad.jpg");
+		mv.setViewName("top");
+		return mv;
 	}
 
+	@RequestMapping("/test")
+	public ModelAndView test(ModelAndView mv) {
+		mv.addObject("URL", "pancake.jpg");
+		mv.setViewName("TEST01");
+		return mv;
+	}
 }

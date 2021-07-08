@@ -5,79 +5,89 @@
 <title>トップページ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-<link rel="stylesheet" media="all" th:href="@{/css/style2.css}"/>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 </head>
 <body>
-<div class="wrapper">
+	<div class="wrapper">
 
-	<header>
-	<!--  <form id="form4" action="/login/search" method="get">
+		<header>
+			<!--  <form id="form4" action="/login/search" method="get">
 	<input id="sbox4"  id="s" name="search" type="text" placeholder="今日は何をつくる？" th:value="${search}" />
 	<button id="sbtn4" type="submit"><i class="fas fa-search"></i></button>
 	</form>
 	-->
 
-	<!-- ↓ハンバーガーメニュー↓ -->
-	<div class="hamburger-demo-menubox">
-		<input id="hamburger-demo1" type="checkbox" class="input-hidden">
-		<label for="hamburger-demo1" class="hamburger-demo-switch hamburger-demo-switch1">
-			<span class="hamburger-switch-line1"></span>
-		</label>
-		<div class="hamburger-demo-menuwrap">
-			<ul class="hamburger-demo-menulist">
-				<li><a href="#">新規会員登録</a></li>
-				<li><a href="#">お気に入り</a></li>
-				<li><a href="#">詳細検索</a></li>
-				<li><a href="#">ログアウト</a></li>
-			</ul>
-		</div>
-		<div class="hamburger-demo-cover"></div>
-	</div>
-<!-- ↑ハンバーガーメニュー -->
-	</header>
-
-
-    <div class="main">main
-    	<h1>HOSHYDAY Kitchen</h1>
-	</div>
-
-	<div class="main2">main2
-	<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
-
-	<!-- Swiper -->
-	<div class="swiper-container mySwiper">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-			<img th:src="@{${'img/' + URL }}" />
-
+			<!-- ↓ハンバーガーメニュー↓ -->
+			<div class="hamburger-demo-menubox">
+				<input id="hamburger-demo1" type="checkbox" class="input-hidden">
+				<label for="hamburger-demo1"
+					class="hamburger-demo-switch hamburger-demo-switch1"> <span
+					class="hamburger-switch-line1"></span>
+				</label>
+				<div class="hamburger-demo-menuwrap">
+					<ul class="hamburger-demo-menulist">
+						<li><a href="#">新規会員登録</a></li>
+						<li><a href="#">お気に入り</a></li>
+						<li><a href="#">詳細検索</a></li>
+						<li><a href="#">ログアウト</a></li>
+					</ul>
+				</div>
+				<div class="hamburger-demo-cover"></div>
 			</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
-			<div class="swiper-slide">Slide 4</div>
-			<div class="swiper-slide">Slide 5</div>
-			<div class="swiper-slide">Slide 6</div>
-			<div class="swiper-slide">Slide 7</div>
-			<div class="swiper-slide">Slide 8</div>
-			<div class="swiper-slide">Slide 9</div>
+			<!-- ↑ハンバーガーメニュー -->
+		</header>
+
+
+		<div class="main">
+			main
+			<h1>HOSHYDAY Kitchen</h1>
 		</div>
-		<div class="swiper-button-next"></div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-pagination"></div>
+
+		<div class="main2">
+			main2
+			<link rel="stylesheet"
+				href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+			<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
+
+			<!-- Swiper -->
+			<div class="swiper-container mySwiper">
+				<div class="swiper-wrapper">
+
+					<div class="swiper-slide">
+						<img th:src="@{${'img/' + session.URL1 }}" />
+
+					</div>
+
+					<div class="swiper-slide">
+						<img th:src="@{${'img/' + session.URL2 }}" />
+					</div>
+
+					<div class="swiper-slide">
+						<img th:src="@{${'img/' + session.URL3 }}" />
+					</div>
+
+					<div class="swiper-slide">
+						<img th:src="@{${'img/' + session.URL4 }}" />
+					</div>
+
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+
+			<!-- Swiper JS -->
+			<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+			<!-- Initialize Swiper -->
+			<script type="text/javascript" th:src="@{/js/slide.js}"></script>
+		</div>
+
+
+		<footer>footer</footer>
+
 	</div>
-
-	<!-- Swiper JS -->
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-	<!-- Initialize Swiper -->
-	<script type="text/javascript" th:src="@{/js/slide.js}"></script>
-	</div>
-
-
-  	<footer>footer</footer>
-
-</div>
 </body>
 </html>
