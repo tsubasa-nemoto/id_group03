@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import url('https://css.gg/search.css');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+@import url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
+
 
 /* fontawesome */
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
@@ -249,9 +251,11 @@ ul.hamburger-demo-menulist li::before {
 h1 {
 	text-align: center;
   	padding: 1em 0;/*上下左右の幅*/
-  	font-family: 'Open Sans', sans-serif;/*フォント*/
+  	font-family: 'Montserrat Subrayada', sans-serif;
   	font-size: 7em;
 }
+
+
 
 .main2 {
 	height:500px;
