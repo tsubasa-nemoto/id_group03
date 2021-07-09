@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>レシピ一覧</title>
 </head>
 <body>
-<div class="wrapper">
-<h1>レシピ一覧</h1>
+	<div class="wrapper">
+		<header></header>
+		<div class="main">
+			<span th:each="recipe:${recipes}" >
+				<img th:src="@{${'img/' + recipe.image}}" />
+
+			<p th:text="${recipe.dish}"></p>
+			<p class="content-2">￥890</p>
+		</span>
+
+		</div>
+	</div>
+
+	<h1>レシピ一覧</h1>
 </body>
 </html>

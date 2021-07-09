@@ -13,6 +13,11 @@ public class Recipe {
 	private String dish;
 	private String recipe;
 	private String review;
+	private String image;
+
+
+
+
 
 	//コンストラクタ
 	public Recipe() {
@@ -39,6 +44,9 @@ public class Recipe {
 	public String getReview() {
 		return review;
 	}
+	public String getImage() {
+		return image;
+	}
 
 	public void setCode(int code) {
 		this.code = code;
@@ -55,5 +63,7 @@ public class Recipe {
 	public void setReview(String review) {
 		this.review = review;
 	}
-
+	public void setImage(String image) {
+		this.image = image;
+	}
 }

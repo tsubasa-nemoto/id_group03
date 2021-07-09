@@ -20,6 +20,8 @@ public class AccountController {
 
 	@Autowired
 	UsersRepository usersRepository;
+	@Autowired
+	RecipeRepository recipeRepository;
 
 	/**
 	 * ログイン画面を表示
@@ -180,17 +182,25 @@ public class AccountController {
 
 	@RequestMapping("/main")
 	public ModelAndView top(ModelAndView mv) {
-		session.setAttribute("URL1", "pancake.jpg");
-		session.setAttribute("URL2", "lime-juice.jpg");
-		session.setAttribute("URL3", "pumpkin-soup.jpg");
-		session.setAttribute("URL4", "small-salad.jpg");
+		//ランダム要素の追加の検討
+		//DBから要素の取り出しセットを行う
+		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
+
+		session.setAttribute("Recipe", recipe);
 		mv.setViewName("top");
 		return mv;
 	}
 
 	@RequestMapping("/test")
 	public ModelAndView test(ModelAndView mv) {
+		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
+
+		session.setAttribute("Recipe", recipe);
+		//		session.setAttribute("URL2", "lime-juice.jpg");
+		//		session.setAttribute("URL3", "pumpkin-soup.jpg");
+		//		session.setAttribute("URL4", "small-salad.jpg");}
 		mv.addObject("URL", "pancake.jpg");
+		mv.addObject("recipe", recipe);
 		mv.setViewName("TEST01");
 		return mv;
 	}

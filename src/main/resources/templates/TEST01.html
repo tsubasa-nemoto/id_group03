@@ -27,17 +27,20 @@
 </head>
 
 <body>
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
+	<link rel="stylesheet"
+		href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
 
 	<!-- Swiper -->
 	<div class="swiper-container mySwiper">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-			<img th:src="@{${'img/' + URL }}" />
 
+			<div th:each="recipe:${session.Recipe}">
+				<div class="swiper-slide">
+					<img th:src="@{${'img/' + recipe.image}}" />
+				</div>
 			</div>
+
 			<div class="swiper-slide">Slide 2</div>
 			<div class="swiper-slide">Slide 3</div>
 			<div class="swiper-slide">Slide 4</div>
@@ -57,5 +60,5 @@
 
 	<!-- Initialize Swiper -->
 	<script type="text/javascript" th:src="@{/js/slide.js}"></script>
-	</body>
+</body>
 </html>
