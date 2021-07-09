@@ -7,20 +7,21 @@
 <!-- CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 </head>
 <body>
 	<div class="wrapper">
 
-		<header>
-			<form id="form4" action="/login/search" method="get">
-				<input id="sbox4" name="search" type="text"
-					placeholder="今日は何をつくる？" th:value="${search}" />
-				<button id="sbtn4" type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</form>
 
+		<header>
+			<form  action="/login/search" method="get">
+				<div class="search-id">
+				<label for="search1"></label>
+					<input type="search"  name="search" id="search1" placeholder="今日は何をつくる？" th:value="${search}" />
+					<button type="submit" class="btn"><i class="gg-search"></i></button>
+				</div>
+			</form>
 
 			<!-- ↓ハンバーガーメニュー↓ -->
 			<div class="hamburger-demo-menubox">

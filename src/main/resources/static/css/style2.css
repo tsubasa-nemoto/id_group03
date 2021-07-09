@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://css.gg/search.css');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
 
 /* fontawesome */
@@ -17,44 +18,64 @@ header {
 	background: #f7e880;
 }
 
-/*検索フォームcss*/
+/*検索フォームcss */
 
-#form4{
-position:relative;
-max-width:300px;
-margin-bottom:20px;
-}
-#sbox4{
-height:50px;
-padding:0 10px;
-position:absolute;
-left:0;
-top:0;
-border-radius:25px;
-outline:0;
-background:#eee;
-}
-#sbtn4{
-height:50px;
-width:50px;
-position:absolute;
-left:250px;
-top:0;
-background :#eee ;
-color:#fff;
-border:none;
-border-radius:0 25px 25px 0;
-}
-#sbtn4 .fa-search{
-font-size:20px;
-position:absolute;
-top:30%;
-left:30%;
-}
-#sbtn4:hover{
-color:#888;
+form {
+  padding: 0 1.5em;/*上下左右の幅*/
 }
 
+.search-id {
+  margin-bottom: 3em;/*下の余白の設定*/
+  width: 100%;
+}
+
+.search-id input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;/*下のボーダーラインの太さ、色を一括して指定*/
+  color: #000000;
+  font-family: 'Open Sans', sans-serif;/*フォント*/
+  font-size: 1em;
+  height: 45px;
+  transition: border-color 0.3s;/*カーソルに乗せたときの色、大きさなどの変化*/
+  width: 40%;
+  border-radius: 60px;/*角を丸める*/
+  text-align: center;
+}
+
+.search-id input:focus {
+  border-bottom: 2px solid #edf870;
+  outline: none;
+}
+
+
+
+ .gg-search {
+ box-sizing: border-box;
+ position: relative;
+ display: block;
+ transform: scale(var(--ggs,1));
+ width: 16px;
+ height: 16px;
+ border: 2px solid;
+ border-radius: 100%;
+ margin-left: -4px;
+ margin-top: -4px
+}
+
+.gg-search::after {
+ content: "";
+ display: block;
+ box-sizing: border-box;
+ position: absolute;
+ border-radius: 3px;
+ width: 2px;
+ height: 8px;
+ background: currentColor;
+ transform: rotate(-45deg);
+ top: 10px;
+ left: 12px
+}
 
 /*ハンバーガーメニューcss*/
 /* header（デモの参考値） */
