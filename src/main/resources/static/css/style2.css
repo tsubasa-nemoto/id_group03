@@ -95,13 +95,13 @@ i {
 }
 
 /*ハンバーガーメニューcss*/
-/* header（デモの参考値） */
+/* header（） */
 .demobox-header{
 background: #ddd;
 height: 64px;
 padding: 1em;
 }
-/* headerのサイト名（デモの参考値） */
+/* headerのサイト名（） */
 .demobox-sitename{
 font-weight: 700;
 font-size: 18px;
@@ -128,7 +128,7 @@ font-size: 18px;
 	width: 4em; /* アイコン（クリック可能領域）の幅 */
 	height: 4em; /* アイコン（クリック可能領域の）高さ */
 }
-/* メニュー展開時にハンバーガーアイコンを固定 */
+/* メニュー展開時にハンrgb(248, 248, 248), 248, 248), 255, 255), 255, 255)ンを固定 */
 #hamburger-demo1:checked ~ .hamburger-demo-switch{
 	position: fixed;
 }
@@ -166,7 +166,7 @@ font-size: 18px;
 .hamburger-demo-menuwrap{
 	position: fixed;
 	height: 100%;
-	background: #fafafa; /* メニューエリアの背景色 */
+	background: #ffffff; /* メニューエリアの背景色 */
 	padding: 5em 3% 2em;
 	z-index: 9998;
 	transition: .3s;
@@ -176,21 +176,44 @@ font-size: 18px;
 	width: 70%;
 }
 /* メニューリスト */
-.hamburger-demo-menulist{
+ul.hamburger-demo-menulist{
+	max-width: 16em;
+	padding: 0 0.5em;
 	margin-right: 3%;
 	padding-left: 5% !important; /* !important不要な場合もあり */
 	list-style: none;
 }
-.hamburger-demo-menulist li a{
+ul.hamburger-demo-menulist li {
+	position: relative;
+	padding: 0.1em 0.3em 1em 1.3em;
+	font-size: 1.2em;
 	text-decoration: none;
 	color: #333; /* メニューリストの文字色 */
 	display: block;
-	padding: .5em 0;
+	/*padding: .5em 0;*/
 }
+a{
+	color: rgb(0,0,0);
+	text-decoration: none;
+}
+
+ul.hamburger-demo-menulist li::before {
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  display: block;
+  width: 6px;
+  height: 6px;
+  content: '';
+  border-right: 3px solid #000000;
+  border-bottom: 3px solid #000000;
+  transform: rotate(-45deg);
+}
+
 /* メニューエリア･アニメーション */
 	/* 右から */
 #hamburger-demo1:checked ~ .hamburger-demo-menuwrap{
-	left: 30%;
+	left: 50%;
 }
 	/* コンテンツカバー */
 #hamburger-demo1:checked ~ .hamburger-demo-cover{
@@ -203,6 +226,18 @@ font-size: 18px;
 	background: rgba(3,3,3,.5);
 	display: block;
 }
+
+
+.loginbtn {
+	position:absolute;
+  	top:19px;
+  	right:120px;
+  	font-family: 'Open Sans', sans-serif;/*フォント*/
+  	font-size: 1.4em;
+}
+
+
+
 
 
 .main {

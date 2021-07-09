@@ -6,7 +6,10 @@
 </head>
 <body>
 	<div class="wrapper">
-		<header></header>
+		<header>
+		<h1>レシピ一覧</h1>
+		</header>
+
 		<div class="main">
 			<span th:each="recipe:${recipes}" >
 				<img th:src="@{${'img/' + recipe.image}}" />
@@ -17,7 +20,5 @@
 
 		</div>
 	</div>
-
-	<h1>レシピ一覧</h1>
 </body>
 </html>
