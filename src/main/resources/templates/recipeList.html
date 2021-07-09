@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>レシピ一覧</title>
+<link rel="stylesheet" media="all" th:href="@{/css/recipeList.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 </head>
 <body>
 	<div class="wrapper">
 		<header>
-		<h1>レシピ一覧</h1>
+			<h1>レシピ一覧</h1>
 		</header>
 
-		<div class="main">
-			<span th:each="recipe:${recipes}" >
-				<img th:src="@{${'img/' + recipe.image}}" />
+		<div class="main2 card-2">
 
-			<p th:text="${recipe.dish}"></p>
-			<p class="content-2">￥890</p>
-		</span>
+			<div th:each="recipe:${recipes}">
+
+				<a class="content-img"> <img
+					th:src="@{${'img/' + recipe.image}}" />
+				</a> <a th:text="${recipe.dish}" class="content-1"></a> <a
+					class="content-2">￥890</a>
+			</div>
 
 		</div>
 	</div>

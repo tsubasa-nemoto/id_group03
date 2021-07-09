@@ -1,0 +1,34 @@
+		<span th:replace="menu"></span>
+
+<form action="/search" method="get">
+				<div class="search-id">
+					<label for="search1"></label> <input type="search" name="search"
+						id="search1" placeholder="今日は何をつくる？" th:value="${search}" />
+					<button type="submit" id="btn">
+						<i class="gg-search"></i>
+					</button>
+				</div>
+			</form>
+
+			<!-- ↓ハンバーガーメニュー↓ -->
+			<div class="hamburger-demo-menubox">
+				<input id="hamburger-demo1" type="checkbox" class="input-hidden">
+				<label for="hamburger-demo1"
+					class="hamburger-demo-switch hamburger-demo-switch1"> <span
+					class="hamburger-switch-line1"></span>
+				</label>
+				<div class="hamburger-demo-menuwrap">
+					<ul class="hamburger-demo-menulist">
+						<li><a href="#">新規会員登録</a></li>
+						<li><a href="#">お気に入り</a></li>
+						<li><a href="#">詳細検索</a></li>
+						<li><a href="#">ログアウト</a></li>
+					</ul>
+				</div>
+				<div class="hamburger-demo-cover"></div>
+			</div>
+			<!-- ↑ハンバーガーメニュー -->
+
+			<ul class="loginbtn">
+				<li><a href="/login">login</a></li>
+			</ul>
