@@ -186,6 +186,10 @@ public class AccountController {
 		//DBから要素の取り出しセットを行う
 		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
 
+
+				session.setAttribute("URL2", "lime-juice.jpg");
+				session.setAttribute("URL3", "pumpkin-soup.jpg");
+				session.setAttribute("URL4", "small-salad.jpg");
 		session.setAttribute("Recipe", recipe);
 		mv.setViewName("top");
 		return mv;

@@ -40,7 +40,7 @@ HttpSession session;
 		//itemList = itemRepository.findByNameLike("%"+name+"%");//あいまい検索したnameをitemListに格納
 		mv.addObject("recipes",recipeList);//itemListをitems(list.htmlのth:eachのところ)に格納
 		//mv.addObject("search", dish);//テキストボックスに保持(menu.htmlのth:valueで格納するキーをつくる)
-
+		session.setAttribute("recipes", recipeList);
 		mv.setViewName("recipeList");//list.htmlで表示
 
 		return mv;

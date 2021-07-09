@@ -9,17 +9,23 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+<!-- スライダー用 -->
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
 </head>
 <body>
 	<div class="wrapper">
 
 
 		<header>
-			<form  action="/login/search" method="get">
+			<form action="/search" method="get">
 				<div class="search-id">
-				<label for="search1"></label>
-					<input type="search"  name="search" id="search1" placeholder="今日は何をつくる？" th:value="${search}" />
-					<button type="submit" id="btn"><i class="gg-search"></i></button>
+					<label for="search1"></label> <input type="search" name="search"
+						id="search1" placeholder="今日は何をつくる？" th:value="${search}" />
+					<button type="submit" id="btn">
+						<i class="gg-search"></i>
+					</button>
 				</div>
 			</form>
 
@@ -51,36 +57,20 @@
 
 		<div class="main2">
 			main2
-			<link rel="stylesheet"
-				href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-			<link rel="stylesheet" media="all" th:href="@{/css/slide.css}" />
 
 			<!-- Swiper -->
 			<div class="swiper-container mySwiper">
 				<div class="swiper-wrapper">
 
-					<div class="swiper-slide">
-						<img th:src="@{${'img/' + session.URL1 }}" />
-
-					</div>
-
-					<div class="swiper-slide">
-						<img th:src="@{${'img/' + session.URL2 }}" />
-					</div>
-
-					<div class="swiper-slide">
-						<img th:src="@{${'img/' + session.URL3 }}" />
-					</div>
-
-					<div class="swiper-slide">
-						<img th:src="@{${'img/' + session.URL4 }}" />
-					</div>
-
+					<span class="swiper-slide" th:each="recipe:${session.Recipe}">
+						<img th:src="@{${'img/' + recipe.image}}" />
+					</span>
 				</div>
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-pagination"></div>
 			</div>
+
 
 			<!-- Swiper JS -->
 			<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -88,7 +78,6 @@
 			<!-- Initialize Swiper -->
 			<script type="text/javascript" th:src="@{/js/slide.js}"></script>
 		</div>
-
 
 		<footer>footer</footer>
 
