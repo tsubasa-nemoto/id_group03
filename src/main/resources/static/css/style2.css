@@ -256,8 +256,6 @@ ul.hamburger-demo-menulist li::before {
 	background: #ffffff;
 }
 
-
-
 h1:not(.H) {
 	text-align: center;
 	padding: 1em 0; /*上下左右の幅*/
@@ -265,7 +263,7 @@ h1:not(.H) {
 	font-size: 7em;
 }
 
-h1.tie{
+h1.tie {
 	text-align: center;
 	padding: 1em 0; /*上下左右の幅*/
 	font-family: 'Montserrat Subrayada', sans-serif;
@@ -275,6 +273,14 @@ h1.tie{
 .main2 {
 	height: 500px;
 	background: #f7f7f7;
+}
+
+.home {
+	font-size:150%;
+	font-family: 'Montserrat Subrayada', sans-serif;
+	position: absolute;
+	top: 20px;
+	left:645px
 }
 
 footer {
