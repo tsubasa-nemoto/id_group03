@@ -7,7 +7,9 @@
 <!-- CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
+	rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 <!-- スライダー用 -->
@@ -42,7 +44,8 @@
 						<li><a href="/signup">新規会員登録</a></li>
 						<li><a href="#">お気に入り</a></li>
 						<li><a href="#">詳細検索</a></li>
-						<li><a href="#">ログアウト</a></li>
+						<li th:if="${session.userInfo==null}"><a href="/login">ログイン</a></li>
+						<li th:if="${session.userInfo!=null}"><a href="/logout">ログアウト</a></li>
 					</ul>
 				</div>
 				<div class="hamburger-demo-cover"></div>
@@ -50,14 +53,17 @@
 			<!-- ↑ハンバーガーメニュー -->
 
 			<ul class="loginbtn">
-				<li><a href="/login">login</a></li>
+				<li th:if="${session.userInfo!=null}"><a href="/logout">logout</a></li>
+				<li th:if="${session.userInfo==null}"><a href="/login">login</a></li>
 			</ul>
 		</header>
 
 
 		<div class="main">
 			main
-			<h1>HOSHYDAYS<br>Kitchen.</h1>
+			<h1>
+				HOSHYDAYS<br>Kitchen.
+			</h1>
 
 		</div>
 

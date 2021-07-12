@@ -32,6 +32,12 @@ public class AccountController {
 		session.invalidate();
 		return "login";
 	}
+	@RequestMapping("/logout")
+	public String logout() {
+		// userInfoのセッション情報はクリアする
+		session.removeAttribute("userInfo");;
+		return "top";
+	}
 
 	/**
 	 * ログインを実行
