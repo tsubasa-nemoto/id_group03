@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>レシピ一覧</title>
+<link rel="stylesheet" media="all" th:href="@{/css/recipeList.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+		</header>
+
+		<div id="cardlayout">
+			<h2>レシピ一覧</h2>
+
+			<section class="card-list">
+				<a class="card-link" href="#">
+				<div th:each="recipe:${recipes}">
+					<figure class="card-figure"><img th:src="@{${'img/' + recipe.image}}" /></figure>
+					<h3 th:text="${recipe.dish}" class="card-title"></h3>
+					<a class="content-2">お気に入りに追加</a>
+				</div>
+				</a>
+			</section>
+
+		</div>
+
+		<div class="card-group">
+			<h2>レシピ一覧</h2>
+
+			<div th:each="recipe:${recipes}">
+				<img th:src="@{${'img/' + recipe.image}}" /></a>
+				<a th:text="${recipe.dish}" class="content-1"></a>
+				<a class="content-2">お気に入りに追加</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
