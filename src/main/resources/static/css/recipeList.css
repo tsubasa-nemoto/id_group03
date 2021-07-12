@@ -1,5 +1,102 @@
 @charset "UTF-8";
+.card-group {
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
+
+.card-group > :nth-child(2n){
+  margin-left: 20px;
+}
+
+.card-group > :nth-child(n+3){
+  margin-top: 20px;
+}
+
+.card4 {
+		width: calc((100% - 20px * 1) / 2);
+        width: 300px;
+        margin: 30px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 3px 6px #ccc;
+    }
+    .image4 {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px 5px 0 0;
+    }
+    .title4 {
+        font-size: 150%;
+        margin: 10px;
+        color: #444;
+    }
+    .content4 {
+        padding: 10px;
+        color: #666;
+    }
+    .box4 {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .continue4 {
+        font-size: 80%;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #08f;
+        color: #08f;
+        background-color: transparent;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.card {
+  margin: 30px auto;
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+.img {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+.card-box {
+  padding: 20px;
+}
+.card-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+*/
+
+
+
+/*
 .card-group{
   margin-left: auto;
   margin-right: auto;
@@ -8,18 +105,18 @@
   width: 90%;
   height: auto;
 
-   /* ポイント１ */
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-/* ポイント２ */
+
 .card-group > :nth-child(2n){
   margin-left: 20px;
 }
-/* ポイント３ */
+
 .card-group > :nth-child(n+3){
   margin-top: 20px;
 }
@@ -28,7 +125,7 @@
 
 .card{
 
-  /* ポイント４ */
+
   width: calc((100% - 20px * 1) / 2);
 
   height: auto;
@@ -40,7 +137,7 @@
 .card_img{
   width: 100%;
   height: auto;
-  padding-top: 56.25%;
+  /*padding-top: 56.25%;
   background: #bbb;
   box-sizing: border-box;
 }
@@ -62,7 +159,7 @@
   font-weight: bold;
   line-height: 125%;
 }
-
+*/
 
 
 
