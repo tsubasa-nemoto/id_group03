@@ -265,6 +265,13 @@ h1:not(.H) {
 	font-size: 7em;
 }
 
+h1.tie{
+	text-align: center;
+	padding: 1em 0; /*上下左右の幅*/
+	font-family: 'Montserrat Subrayada', sans-serif;
+	font-size: 3em;
+}
+
 .main2 {
 	height: 500px;
 	background: #f7f7f7;

@@ -3,10 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>レシピ一覧</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
+	rel="stylesheet">
+<link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/recipeList.css}" />
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 </head>
 <body>
+	<div class="wrapper">
+
+		<header>
+			<span th:replace="menu"></span>
+		</header>
+
 
 		<!--  <div id="cardlayout">
 			<h2>レシピ一覧</h2>
@@ -70,16 +82,18 @@
 		</div>
 -->
 
-<div class="card-group">
-	<div th:each="recipe:${recipes}" class="card4">
-   		<img th:src="@{${'img/' + recipe.image}}" class="image4">
-    	<p th:text="${recipe.dish}" class="title4"></p>
-    	<p class="content4">本文</p>
-    	<div class="box4">
-        	<button class="continue4">レシピ詳細</button>
+<h1 class="tie">レシピ一覧</h1>
+
+	<div class="card-group">
+		<div th:each="recipe:${recipes}" class="card4">
+   			<img th:src="@{${'img/' + recipe.image}}" class="image4">
+    		<p th:text="${recipe.dish}" class="title4"></p>
+    		<p class="content4">本文</p>
+    		<div class="box4">
+        		<button class="continue4">レシピ詳細</button>
+			</div>
 		</div>
 	</div>
 </div>
-
 </body>
 </html>
