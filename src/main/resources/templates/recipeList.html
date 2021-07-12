@@ -19,81 +19,30 @@
 			<span th:replace="menu"></span>
 		</header>
 
+		<h1 class="tie"><span th:text="${mes}"></span></h1>
 
-		<!--  <div id="cardlayout">
-			<h2>レシピ一覧</h2>
-
-			<section class="card-list">
-				<a class="card-link" href="#">
-				<div th:each="recipe:${recipes}">
-					<figure class="card-figure"><img th:src="@{${'img/' + recipe.image}}" /></figure>
-					<h3 th:text="${recipe.dish}" class="card-title"></h3>
-					<a class="content-2">お気に入りに追加</a>
-				</div>
-				</a>
-			</section>
-		</div>
-		-->
-
-		<!--
 		<div class="card-group">
-			<div class="card" >
-			<div th:each="recipe:${recipes}">
-			<img th:src="@{${'img/' + recipe.image}}" />
-				<div th:text="${recipe.dish}" class="card-title"></div>
-				<a class="content-2" href="#">お気に入りに追加</a>
-				</div>
-			</div>
-			</div>
-		</div>
-		-->
+			<div th:each="recipe:${recipes}" class="card4">
 
-<!--
-		<div class="card-group">
-			<div class="card" >
-				<img class="card_img" th:src="@{/img/pancake.jpg}"></div>
-				<div class="card_box">
-					<div class="card_text">
-					パンケーキ
+				<img th:src="@{${'img/' + recipe.image}}" class="image4">
+				<p th:text="${recipe.dish}" class="title4"></p>
+				<p class="content4">お気に入り追加</p>
+
+					<div class="box4">
+						<button  class="continue4"
+						th:attr="onClick='location.href=\''+${recipe.dish}+'\''">
+
+
+						<!--クリックした場合リンクに飛ぶ
+						onClickでクリックの監視、location.hrefでリンク機能
+						\''+${recipe.dish}+'\''
+						エスケープ処理の\'''+${}+'\''
+						  -->
+
+						レシピ詳細</button>
 					</div>
-				<a class="content-2" href="#">お気に入りに追加</a>
-				</div>
-			</div>
-
-			<div class="card" >
-				<div class="card_img"></div>
-				<div class="card_box">
-					<div class="card_text">
-					トマト
-					</div>
-				<a class="content-2" href="#">お気に入りに追加</a>
-				</div>
-			</div>
-
-			<div class="card" >
-				<div class="card_img"></div>
-				<div class="card_box">
-					<div class="card_text">
-					サラダ
-					</div>
-				<a class="content-2" href="#">お気に入りに追加</a>
-				</div>
-			</div>
-		</div>
--->
-
-<h1 class="tie">レシピ一覧</h1>
-
-	<div class="card-group">
-		<div th:each="recipe:${recipes}" class="card4">
-   			<img th:src="@{${'img/' + recipe.image}}" class="image4">
-    		<p th:text="${recipe.dish}" class="title4"></p>
-    		<p class="content4">本文</p>
-    		<div class="box4">
-        		<button class="continue4">レシピ詳細</button>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
