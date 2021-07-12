@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body{
+margin:0;
+
+
+}
+.container{/*表示範囲の設定*/
+	min-width: 100vh;
+	display: flex;
+	min-height: 100vh;
+	padding-top:50px;
+	padding-left:150px
+}
+
+#detail_image {
+	height: 35em;
+	width: 30em;
+/*	position: relative;
+	left: 150px;
+	top: 50px
+*/}
+.H{
+	font-size: 7em;
+}
+
+aside{
+position: relative;
+	left: 50px;
+	top: 50px
+}

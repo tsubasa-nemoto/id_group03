@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title> </title>
+
+
+<title th:text="${recipe.dish}"></title>
+
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
+	rel="stylesheet">
+<link href='https://css.gg/search.css' rel='stylesheet'>
+<link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/details.css}" />
 </head>
 <body>
+	<div class="wrapper">
 
+		<header>
+			<span th:replace="menu"></span>
+		</header>
+		<div class="container">
+			<a> <img th:src="@{${'img/' + recipe.image}}" id="detail_image">
+			</a>
+			<aside>
+				<h1 th:text="${recipe.dish}" class="H"></h1>
+				<br>
+				<span th:text="${recipe.recipe}"></span>
+				<span th:text="${recipe.review}"></span>
+			</aside>
+		</div>
+
+
+	</div>
 </body>
 </html>

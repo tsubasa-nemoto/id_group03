@@ -1,13 +1,17 @@
 @charset "UTF-8";
-@import url('https://css.gg/search.css');
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
-@import url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
 
+@import url('https://css.gg/search.css');
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+
+@import
+	url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
 
 /* fontawesome */
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+	font-family: 'FontAwesome', sans-serif;
 }
 
 .wrapper {
@@ -16,112 +20,111 @@
 }
 
 header {
-	height:65px;
+	height: 65px;
 	background: #f7e880;
 }
 
 /*検索フォームcss */
-
 form {
-  position:absolute;
-  width:450px;
-  top:9px;
-  left:10px;
-  padding: 0 1.5em;/*上下左右の幅*/
+	position: absolute;
+	width: 450px;
+	top: 9px;
+	left: 10px;
+	padding: 0 1.5em; /*上下左右の幅*/
 }
 
 .search-id {
-  margin-bottom: 3em;/*下の余白の設定*/
-  width: 100%;
+	margin-bottom: 3em; /*下の余白の設定*/
+	width: 100%;
 }
 
 .search-id input {
-  background: #fdfdfd;
-  border: none;
-  color: #000000;
-  font-family: 'Open Sans', sans-serif;/*フォント*/
-  font-size: 1em;
-  height: 45px;
-  transition: border-color 0.3s;/*カーソルに乗せたときの色、大きさなどの変化*/
-  width: 100%;
-  border-radius: 60px;/*角を丸める*/
-  text-align: left;
-  padding: 0 20px;/*テキスト位置修正*/
+	background: #fdfdfd;
+	border: none;
+	color: #000000;
+	font-family: 'Open Sans', sans-serif; /*フォント*/
+	font-size: 1em;
+	height: 45px;
+	transition: border-color 0.3s; /*カーソルに乗せたときの色、大きさなどの変化*/
+	width: 100%;
+	border-radius: 60px; /*角を丸める*/
+	text-align: left;
+	padding: 0 20px; /*テキスト位置修正*/
 }
 
 .search-id input:focus {
-  outline: none;
+	outline: none;
 }
 
 #btn {
-	position:absolute;
-	width:60px;
-	right:25px;
+	position: absolute;
+	width: 60px;
+	right: 25px;
 	background: #fdfdfd;
-	border:none;
+	border: none;
 	height: 45px;
-	border-radius: 60px;/*角を丸める*/
-
+	border-radius: 60px; /*角を丸める*/
 }
 
 i {
-	position:absolute;
-	left:20px;
+	position: absolute;
+	left: 20px;
 }
 
- .gg-search {
- box-sizing: border-box;
- position: relative;
- display: block;
- transform: scale(var(--ggs,1));
- width: 16px;
- height: 16px;
- border: 2px solid;
- border-radius: 100%;
- margin-left: -4px;
- margin-top: -4px
+.gg-search {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	transform: scale(var(- -ggs, 1));
+	width: 16px;
+	height: 16px;
+	border: 2px solid;
+	border-radius: 100%;
+	margin-left: -4px;
+	margin-top: -4px
 }
 
 .gg-search::after {
- content: "";
- display: block;
- box-sizing: border-box;
- position: absolute;
- border-radius: 3px;
- width: 2px;
- height: 8px;
- background: currentColor;
- transform: rotate(-45deg);
- top: 10px;
- left: 12px
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	border-radius: 3px;
+	width: 2px;
+	height: 8px;
+	background: currentColor;
+	transform: rotate(-45deg);
+	top: 10px;
+	left: 12px
 }
 
 /*ハンバーガーメニューcss*/
 /* header（） */
-.demobox-header{
-background: #ddd;
-height: 64px;
-padding: 1em;
+.demobox-header {
+	background: #ddd;
+	height: 64px;
+	padding: 1em;
 }
 /* headerのサイト名（） */
-.demobox-sitename{
-font-weight: 700;
-font-size: 18px;
+.demobox-sitename {
+	font-weight: 700;
+	font-size: 18px;
 }
 /* 全体調整CSS */
-.hamburger-demo-menubox *{
+.hamburger-demo-menubox * {
 	font-size: 16px;
 }
-.hamburger-demo-menubox li{
+
+.hamburger-demo-menubox li {
 	font-size: 14px;
 }
 /* hamburgerここから */
-	/* inputを非表示 */
-.input-hidden{
+/* inputを非表示 */
+.input-hidden {
 	display: none;
 }
-	/* label */
-.hamburger-demo-switch{
+/* label */
+.hamburger-demo-switch {
 	cursor: pointer;
 	position: absolute;
 	right: 3%;
@@ -131,11 +134,12 @@ font-size: 18px;
 	height: 4em; /* アイコン（クリック可能領域の）高さ */
 }
 /* メニュー展開時にハンrgb(248, 248, 248), 248, 248), 255, 255), 255, 255)ンを固定 */
-#hamburger-demo1:checked ~ .hamburger-demo-switch{
+#hamburger-demo1:checked ~ .hamburger-demo-switch {
 	position: fixed;
 }
 /* ハンバーガーアイコン */
-.hamburger-switch-line1, .hamburger-switch-line1:before, .hamburger-switch-line1:after{
+.hamburger-switch-line1, .hamburger-switch-line1:before,
+	.hamburger-switch-line1:after {
 	width: 25px;
 	height: 3px;
 	background: #333; /* ハンバーガーアイコンの色 */
@@ -145,27 +149,35 @@ font-size: 18px;
 	transition: .3s;
 	content: "";
 }
-.hamburger-switch-line1{
-		transform: translate(-50%, -50%);
+
+.hamburger-switch-line1 {
+	transform: translate(-50%, -50%);
 }
-.hamburger-switch-line1:before{
+
+.hamburger-switch-line1:before {
 	transform: translate(-50%, -300%);
 }
-.hamburger-switch-line1:after{
+
+.hamburger-switch-line1:after {
 	transform: translate(-50%, 200%);
 }
 /* ハンバーガーアイコン･アニメーション */
-#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1{
+#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1
+	{
 	width: 0;
 }
-#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1:before{
+
+#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1:before
+	{
 	transform: rotate(45deg) translate(-40%, 325%);
 }
-#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1:after{
+
+#hamburger-demo1:checked ~ .hamburger-demo-switch .hamburger-switch-line1:after
+	{
 	transform: rotate(-45deg) translate(-40%, -325%);
 }
 /* メニューエリア */
-.hamburger-demo-menuwrap{
+.hamburger-demo-menuwrap {
 	position: fixed;
 	height: 100%;
 	background: #ffffff; /* メニューエリアの背景色 */
@@ -178,13 +190,14 @@ font-size: 18px;
 	width: 70%;
 }
 /* メニューリスト */
-ul.hamburger-demo-menulist{
+ul.hamburger-demo-menulist {
 	max-width: 16em;
 	padding: 0 0.5em;
 	margin-right: 3%;
 	padding-left: 5% !important; /* !important不要な場合もあり */
 	list-style: none;
 }
+
 ul.hamburger-demo-menulist li {
 	position: relative;
 	padding: 0.1em 0.3em 1em 1.3em;
@@ -194,76 +207,70 @@ ul.hamburger-demo-menulist li {
 	display: block;
 	/*padding: .5em 0;*/
 }
-a{
-	color: rgb(0,0,0);
+
+a {
+	color: rgb(0, 0, 0);
 	text-decoration: none;
 }
 
 ul.hamburger-demo-menulist li::before {
-  position: absolute;
-  top: 0.5em;
-  left: 0;
-  display: block;
-  width: 6px;
-  height: 6px;
-  content: '';
-  border-right: 3px solid #000000;
-  border-bottom: 3px solid #000000;
-  transform: rotate(-45deg);
+	position: absolute;
+	top: 0.5em;
+	left: 0;
+	display: block;
+	width: 6px;
+	height: 6px;
+	content: '';
+	border-right: 3px solid #000000;
+	border-bottom: 3px solid #000000;
+	transform: rotate(-45deg);
 }
 
 /* メニューエリア･アニメーション */
-	/* 右から */
-#hamburger-demo1:checked ~ .hamburger-demo-menuwrap{
+/* 右から */
+#hamburger-demo1:checked ~ .hamburger-demo-menuwrap {
 	left: 50%;
 }
-	/* コンテンツカバー */
-#hamburger-demo1:checked ~ .hamburger-demo-cover{
+/* コンテンツカバー */
+#hamburger-demo1:checked ~ .hamburger-demo-cover {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	z-index: 9997;
-	background: rgba(3,3,3,.5);
+	background: rgba(3, 3, 3, .5);
 	display: block;
 }
 
-
 .loginbtn {
-	position:absolute;
-  	top:19px;
-  	right:120px;
-  	font-family: 'Open Sans', sans-serif;/*フォント*/
-  	font-size: 1.4em;
+	position: absolute;
+	top: 19px;
+	right: 120px;
+	font-family: 'Open Sans', sans-serif; /*フォント*/
+	font-size: 1.4em;
 }
-
-
-
-
 
 .main {
-	height:500px;
-  	background: #ffffff;
-
+	height: 500px;
+	background: #ffffff;
 }
 
-h1 {
+
+
+h1:not(.H) {
 	text-align: center;
-  	padding: 1em 0;/*上下左右の幅*/
-  	font-family: 'Montserrat Subrayada', sans-serif;
-  	font-size: 7em;
+	padding: 1em 0; /*上下左右の幅*/
+	font-family: 'Montserrat Subrayada', sans-serif;
+	font-size: 7em;
 }
-
-
 
 .main2 {
-	height:500px;
+	height: 500px;
 	background: #f7f7f7;
-
 }
 
 footer {
-	height:100px;
+	height: 100px;
 	background: black;
 }

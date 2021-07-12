@@ -1,11 +1,13 @@
 package com.example.demo;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
@@ -43,6 +45,19 @@ HttpSession session;
 		session.setAttribute("recipes", recipeList);
 		mv.setViewName("recipeList");//list.htmlで表示
 
+		return mv;
+	}
+
+	@RequestMapping(value = "{dish}")
+	public ModelAndView details(
+			@PathVariable(name = "dish")String dish ,
+			ModelAndView mv	) {
+		Optional<Recipe> recipe;
+		recipe= recipeRepository.findByDish(dish);
+		Recipe R=recipe.get();
+			mv.addObject("recipe",R);
+
+mv.setViewName("details");
 		return mv;
 	}
 }
