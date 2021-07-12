@@ -1,30 +1,153 @@
 @charset "UTF-8";
+@import url('https://css.gg/bookmark.css');
+@import "https://use.fontawesome.com/releases/v5.13.0/css/all.css";
+
 body{
 margin:0;
 
-
 }
+
+div {
+	display:flex;
+}
+
 .container{/*表示範囲の設定*/
-	min-width: 100vh;
 	display: flex;
+	/*min-width: 100vh;
 	min-height: 100vh;
 	padding-top:50px;
-	padding-left:150px
+	padding-left:150px*/
+}
+
+.main {
+	width:50%;
+}
+
+.side {
+	width:50%;
 }
 
 #detail_image {
 	height: 35em;
 	width: 30em;
-/*	position: relative;
+	position: relative;
 	left: 150px;
-	top: 50px
-*/}
-.H{
-	font-size: 7em;
+	top: 60px;
+	border-radius: 15px; /*角を丸める*/
 }
 
-aside{
-position: relative;
-	left: 50px;
-	top: 50px
+.H{
+	font-size: 4em;
+	position:relative;
+	top:48px;
+	right:45px;
 }
+
+.text {
+	position:relative;
+	top:300px;
+	right:295px;
+}
+
+.review {
+	position:relative;
+	top:500px;
+	right:402px;
+}
+
+/*
+.favorite {
+	height:70px;
+	font-size: 200%;
+        margin: 25px;
+        padding: 5px;
+        border-radius: 35px;
+        border: 1px solid #e3e3e3;
+        color: #e3e3e3;
+        background-color: transparent;
+}*/
+
+
+
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+a.btn-tag {
+  padding: 1.25rem 3rem 1.25rem 80px;
+}
+
+a.btn-tag:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 50px;
+  height: 100%;
+
+  content: "";
+
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+a.btn-tag--favorite {
+  color: #fff;
+  background: #f39800;
+}
+
+a.btn-tag--favorite:before {
+  background: #fff;
+}
+
+a.btn-tag--favorite i {
+  font-size: 120%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 50px;
+  padding: 1.4rem 0;
+
+  -webkit-transition: all 0.3s;
+
+  transition: all 0.3s;
+  text-align: center;
+  letter-spacing: 0;
+
+  opacity: 0.5;
+  color: #f39800;
+}
+
+a.btn-tag--favorite:hover {
+  background: #ffa50e;
+}
+
+a.btn-tag--favorite:hover i {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+  opacity: 1;
+}
+

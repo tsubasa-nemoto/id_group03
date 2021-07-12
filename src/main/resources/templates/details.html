@@ -14,27 +14,32 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
 	rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
+<link href='https://css.gg/bookmark.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 <link rel="stylesheet" media="all" th:href="@{/css/details.css}" />
 </head>
 <body>
-	<div class="wrapper">
 
 		<header>
 			<span th:replace="menu"></span>
 		</header>
+
 		<div class="container">
+
+			<div class="main">left
 			<a> <img th:src="@{${'img/' + recipe.image}}" id="detail_image">
 			</a>
-			<aside>
+			</div>
+
+			<div class="side">right
 				<h1 th:text="${recipe.dish}" class="H"></h1>
 				<br>
-				<span th:text="${recipe.recipe}"></span>
-				<span th:text="${recipe.review}"></span>
-			</aside>
+				<a href="#" class="btn btn-tag btn-tag--favorite"><i class="fas fa-star"></i>お気に入り</a>
+				<span th:text="${recipe.recipe}" class="text"></span>
+				<span th:text="${recipe.review}" class="review"></span>
+			</div>
+
 		</div>
 
-
-	</div>
 </body>
 </html>
