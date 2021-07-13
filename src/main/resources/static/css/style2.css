@@ -253,7 +253,7 @@ ul.hamburger-demo-menulist li::before {
 
 .main {
 
-	height: 500px;
+	height: 700px;
 	background: #ffffff;
 }
 
@@ -271,11 +271,63 @@ h1.tie {
 	font-size: 3em;
 }
 
+
+/*スクロール*/
+.scroll {
+  display: inline-block;
+  position: absolute;
+  right: 50em;
+  bottom: 0;
+  z-index: 2;
+  padding: 10px 10px 110px;
+  overflow: hidden;
+  color: #400040;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  line-height: 1;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  /*writing-mode: vertical-lr;*/
+}
+.scroll::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: 100px;
+  background: #400040;
+}
+
 .main2 {
 	width:1200px;
 	margin:0 auto;
-	height: 500px;
+	height: 700px;
 	background: #f7f7f7;
+}
+
+h2 {
+  position: relative;
+  top:35px;
+  left:515px;
+  display: inline-block;
+  margin-bottom: 1em;
+  font-size:30px;
+  font-family: 'Open Sans', sans-serif; /*フォント*/
+}
+h2:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: black;
+  border-radius: 2px;
 }
 
 .home {

@@ -15,8 +15,10 @@
       }*/
 
       .swiper-container {
+      	position:relative;
+      	top:90px;
         width: 80%;
-        height: 93%;
+        height: 60%;
       }
 
       .swiper-slide {
