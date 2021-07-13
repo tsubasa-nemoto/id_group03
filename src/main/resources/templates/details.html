@@ -15,6 +15,7 @@
 	rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link href='https://css.gg/bookmark.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 <link rel="stylesheet" media="all" th:href="@{/css/details.css}" />
 </head>
@@ -27,15 +28,22 @@
 		<div class="container">
 
 			<div class="main">left
-			<a> <img th:src="@{${'img/' + recipe.image}}" id="detail_image">
-			</a>
+				<a> <img th:src="@{${'/img/' + recipe.image}}" id="detail_image">
+				</a>
+
+				<div  class="favorite" >
+				<a href="#" class="favorite2"><i class="f-icon far fa-heart"></i></a>
+				</div>
 			</div>
 
 			<div class="side">right
 				<h1 th:text="${recipe.dish}" class="H"></h1>
 				<br>
-				<a href="#" class="btn btn-tag btn-tag--favorite"><i class="fas fa-star"></i>お気に入り</a>
+
+				<div class="pie"><span>35min.</span></div>
+
 				<span th:text="${recipe.recipe}" class="text"></span>
+
 				<a th:href="${recipe.dish}+'/review'">レビュー詳細</a>
 					<table style="width: 100%;" border="1" class="review">
 						<tr>
