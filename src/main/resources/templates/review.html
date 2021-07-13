@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${recipe.dish}"></title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
+	rel="stylesheet">
+<link href='https://css.gg/search.css' rel='stylesheet'>
+<link href='https://css.gg/bookmark.css' rel='stylesheet'>
+<link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+
+</head>
+<body>
+	<header>
+		<span th:replace="menu"></span>
+	</header>
+
+	<h1 th:text="${recipe.dish}"></h1>
+	<h2 th:text="${mes}"></h2>
+	<div th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
+		<form action="/review" method="post">
+			<input type="hidden" name="dish" th:value="${recipe.dish}">
+			<textarea name="review" placeholder="書き込み"></textarea>
+			<p>
+				<input type="submit" value="投稿する">
+			</p>
+		</form>
+	</div>
+
+	<table style="width: 100%;" border="1" class="review"> <!-- レビュー表示 -->
+		<tr>
+			<th>名前</th>
+			<th>書き込み</th>
+		</tr>
+		<tr th:each="rev:${reviewList}">
+			<td th:text="${rev.name}"></td>
+			<td th:utext="${rev.review}"></td>
+			<!-- utextはタグをタグとして認識する機能 -->
+		</tr>
+	</table>
+
+
+	<hr>
+</body>
+</html>

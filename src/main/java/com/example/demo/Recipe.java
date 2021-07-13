@@ -12,7 +12,6 @@ public class Recipe {
 	private int code;
 	private String dish;
 	private String recipe;
-	private String review;
 	private String image;
 
 
@@ -40,10 +39,6 @@ public class Recipe {
 	public String getRecipe() {
 		return recipe;
 	}
-
-	public String getReview() {
-		return review;
-	}
 	public String getImage() {
 		return image;
 	}
@@ -60,9 +55,7 @@ public class Recipe {
 		this.recipe = recipe;
 	}
 
-	public void setReview(String review) {
-		this.review = review;
-	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}

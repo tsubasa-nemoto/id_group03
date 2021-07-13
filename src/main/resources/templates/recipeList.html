@@ -19,7 +19,9 @@
 			<span th:replace="menu"></span>
 		</header>
 
-		<h1 class="tie"><span th:text="${mes}"></span></h1>
+		<h1 class="tie">
+			<span th:text="${mes}"></span>
+		</h1>
 
 		<div class="card-group">
 			<div th:each="recipe:${recipes}" class="card4">
@@ -28,19 +30,25 @@
 				<p th:text="${recipe.dish}" class="title4"></p>
 				<p class="content4">お気に入り追加</p>
 
-					<div class="box4">
-						<button  class="continue4"
+				<div class="box4">
+					<button class="continue4"
 						th:attr="onClick='location.href=\''+${recipe.dish}+'\''">
-
-
-						<!--クリックした場合リンクに飛ぶ
+<!--
+						クリックした場合リンクに飛ぶ
 						onClickでクリックの監視、location.hrefでリンク機能
 						\''+${recipe.dish}+'\''
 						エスケープ処理の\'''+${}+'\''
 						  -->
 
-						レシピ詳細</button>
-					</div>
+						<!--
+						任意の属性を使用したい場合はth:attrを使い
+						th:attr="onclick"としてやることで、
+						thymeleafの機能を使ってonclickを動的に設定することができる
+						-->
+
+						レシピ詳細
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

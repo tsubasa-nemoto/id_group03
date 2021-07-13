@@ -36,7 +36,17 @@
 				<br>
 				<a href="#" class="btn btn-tag btn-tag--favorite"><i class="fas fa-star"></i>お気に入り</a>
 				<span th:text="${recipe.recipe}" class="text"></span>
-				<span th:text="${recipe.review}" class="review"></span>
+				<a th:href="${recipe.dish}+'/review'">レビュー詳細</a>
+					<table style="width: 100%;" border="1" class="review">
+						<tr>
+							<th>名前</th>
+							<th>書き込み</th>
+						</tr>
+						<tr th:each="rev:${reviewList}">
+							<td th:text="${rev.name}"></td>
+							<td th:utext="${rev.review}"></td><!-- utextはタグをタグとして認識する機能 -->
+						</tr>
+					</table>
 			</div>
 
 		</div>

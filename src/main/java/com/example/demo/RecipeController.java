@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 @Controller
 public class RecipeController {
 
 	@Autowired
 	RecipeRepository recipeRepository;
-@Autowired
-HttpSession session;
 
+	@Autowired
+	ReviewRepository reviewRepository;
+	@Autowired
+	HttpSession session;
 
 	/**
 	 * レシピ検索の料理を表示
@@ -30,18 +33,17 @@ HttpSession session;
 
 		List<Recipe> recipeList = null;//nullを入れて中身を空っぽに
 		recipeList = recipeRepository.findAll();
-		if (dish.equals("") ) {//すべて空白だったら
+		if (dish.equals("")) {//すべて空白だったら
 			recipeList = recipeRepository.findAll();//全件検索
-			mv.addObject("mes","レシピ一覧");
-			session.setAttribute("mes","レシピ一覧");
+			mv.addObject("mes", "レシピ一覧");
+			session.setAttribute("mes", "レシピ一覧");
 		} else if (!dish.equals("")) {//nameが空白でないとき
-			recipeList = recipeRepository.findByDishLike("%"+dish+"%");//あいまい検索で表示
-		mv.addObject("mes",dish+"の検索結果");
-
+			recipeList = recipeRepository.findByDishLike("%" + dish + "%");//あいまい検索で表示
+			mv.addObject("mes", dish + "の検索結果");
 
 		}
 
-		mv.addObject("recipes",recipeList);//itemListをitems(list.htmlのth:eachのところ)に格納
+		mv.addObject("recipes", recipeList);//itemListをitems(list.htmlのth:eachのところ)に格納
 		//mv.addObject("search", dish);//テキストボックスに保持(menu.htmlのth:valueで格納するキーをつくる)
 		session.setAttribute("recipes", recipeList);
 		mv.setViewName("recipeList");//list.htmlで表示
@@ -51,14 +53,16 @@ HttpSession session;
 
 	@RequestMapping(value = "{dish}")
 	public ModelAndView details(
-			@PathVariable(name = "dish")String dish ,
-			ModelAndView mv	) {
-		Optional<Recipe> recipe;
-		recipe= recipeRepository.findByDish(dish);
-		Recipe R=recipe.get();
-			mv.addObject("recipe",R);
+			@PathVariable(name = "dish") String dish,
+			ModelAndView mv) {
+		Optional<Recipe> recipe = recipeRepository.findByDish(dish);
+		Recipe R = recipe.get();
+		List<Review> review = reviewRepository.findByCode(R.getCode());
 
-mv.setViewName("details");
+		mv.addObject("reviewList",review);
+		mv.addObject("recipe", R);
+
+		mv.setViewName("details");
 		return mv;
 	}
 }

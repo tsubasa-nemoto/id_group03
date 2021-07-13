@@ -30,6 +30,7 @@ public class AccountController {
 	public String login() {
 		// セッション情報はクリアする
 		session.invalidate();
+		
 		return "login";
 	}
 	@RequestMapping("/logout")
