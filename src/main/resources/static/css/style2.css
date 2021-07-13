@@ -25,7 +25,7 @@ header {
 }
 
 /*検索フォームcss */
-form {
+form:not(.review){
 	position: absolute;
 	width: 450px;
 	top: 9px;

@@ -51,7 +51,7 @@ public class RecipeController {
 		return mv;
 	}
 
-	@RequestMapping(value = "{dish}")
+	@RequestMapping(value = "{dish}/details")
 	public ModelAndView details(
 			@PathVariable(name = "dish") String dish,
 			ModelAndView mv) {

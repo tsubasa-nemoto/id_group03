@@ -27,17 +27,23 @@ public class AccountController {
 	 * ログイン画面を表示
 	 */
 	@RequestMapping("/login")
-	public String login() {
+	public String login(@RequestParam(name="prev",defaultValue = "/main")String prev ) {
 		// セッション情報はクリアする
 		session.invalidate();
-		
+
+		session.setAttribute("prev", prev);
+
 		return "login";
 	}
 	@RequestMapping("/logout")
-	public String logout() {
+	public ModelAndView logout(ModelAndView mv,
+			@RequestParam(name="prev",defaultValue = "/main")String prev ) {
 		// userInfoのセッション情報はクリアする
-		session.removeAttribute("userInfo");;
-		return "top";
+
+		session.removeAttribute("userInfo");
+		mv.setViewName("redirect:"+prev);
+
+		return mv;
 	}
 
 	/**
@@ -72,8 +78,8 @@ public class AccountController {
 				if (truePass.equals(password)) {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
-					//session.setAttribute("categories", categoryRepository.findAll());
-					return top(mv);
+					mv.setViewName("redirect:"+session.getAttribute("prev"));
+					return mv;
 				}
 				// 空の場合にエラーとする
 				else {

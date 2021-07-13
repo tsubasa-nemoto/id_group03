@@ -18,6 +18,15 @@ public class Review {
 
 	}
 
+
+	public Review(int code, String review, String name) {
+		super();
+		this.code = code;
+		this.review = review;
+		this.name = name;
+	}
+
+
 	//ゲッターセッター
 	public int getCode() {
 		return code;

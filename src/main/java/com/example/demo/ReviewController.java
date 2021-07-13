@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -49,6 +51,25 @@ public class ReviewController {
 			mv.addObject("reviewList",Rlist);
 			mv.setViewName("review");
 
+		return mv;
+	}
+	@PostMapping("{dish}/review")
+	public ModelAndView view(
+			@PathVariable(name="dish")String dish,
+			ModelAndView mv,
+			@RequestParam("review") String review
+			) {
+
+		Optional<Recipe> A=recipeRepository.findByDish(dish);
+		Recipe R =A.get();
+		int code=R.getCode();
+		String name=(String)session.getAttribute("userInfo");
+		Review rev=new Review(code,review,name);
+		List<Review>Rlist=reviewRepository.findByCode(code);
+		reviewRepository.saveAndFlush(rev);
+		mv.addObject("recipe",A);
+		mv.addObject("reviewList",Rlist);
+		mv.setViewName("review");
 		return mv;
 	}
 }

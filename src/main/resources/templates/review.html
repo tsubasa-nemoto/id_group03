@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${recipe.dish}"></title>
-<!-- CSS -->
+<!-- CSS-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 <link
@@ -20,9 +20,9 @@
 	</header>
 
 	<h1 th:text="${recipe.dish}"></h1>
-	<h2 th:text="${mes}"></h2>
+	<span th:text="${mes}"></span>
 	<div th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
-		<form action="/review" method="post">
+		<form th:action="@{'/'+${recipe.dish}+'/review'}" method="post" class="review">
 			<input type="hidden" name="dish" th:value="${recipe.dish}">
 			<textarea name="review" placeholder="書き込み"></textarea>
 			<p>
