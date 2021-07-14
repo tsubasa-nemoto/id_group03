@@ -21,6 +21,8 @@ public class RecipeController {
 	@Autowired
 	ReviewRepository reviewRepository;
 	@Autowired
+	FavoriteRepository favoriteRepository;
+	@Autowired
 	HttpSession session;
 
 	/**
@@ -59,10 +61,46 @@ public class RecipeController {
 		Recipe R = recipe.get();
 		List<Review> review = reviewRepository.findByCode(R.getCode());
 
-		mv.addObject("reviewList",review);
+		mv.addObject("reviewList", review);
 		mv.addObject("recipe", R);
 
 		mv.setViewName("details");
+		return mv;
+	}
+
+	@RequestMapping("{dish}/details/fav")
+	public ModelAndView fav(@PathVariable(name = "dish") String dish,
+			@RequestParam(name="prev",defaultValue = "/main")String prev,
+			ModelAndView mv) {
+		// セッション情報はクリアする
+		session.setAttribute("prev", prev);
+Users user=(Users)session.getAttribute("userInfo");
+
+if(user==null) {
+			mv.addObject("message","お気に入り機能を利用するにはログインしてください");
+			mv.setViewName("login");
+		}else {				List<Favorite> LFavorite=favoriteRepository.findByDishAndName(dish,user.getName());
+			if(LFavorite==null) {
+		Favorite FAV=new Favorite(dish,user.getName(),false);
+		favoriteRepository.saveAndFlush(FAV);
+			}
+
+
+			List<Favorite> Fdish=favoriteRepository.findByDishAndName(dish,user.getName());
+			Favorite F=Fdish.get(0);
+
+
+				int id=F.getId();
+				boolean fav;
+				if(F.getFav()) {fav=false;
+				}else {fav=true;}
+				Favorite FAV=new Favorite(id,dish,user.getName(),fav);
+				favoriteRepository.saveAndFlush(FAV);
+			}
+		List<Favorite> list=favoriteRepository.findByFav(true);
+		session.setAttribute("favorite", list);
+		mv.setViewName("redirect:"+session.getAttribute("prev"));
+
 		return mv;
 	}
 }

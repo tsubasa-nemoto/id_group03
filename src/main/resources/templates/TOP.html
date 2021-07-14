@@ -64,7 +64,7 @@
 			<h1>
 				HOSHYDAYS<br>Kitchen.
 			</h1>
-			<a class="scroll" href="#">
+			<a class="scroll" href="#pic">
 			Scroll
 			</a>
 
@@ -72,14 +72,14 @@
 		</div>
 
 		<div class="main2">
-			<h2>RECIPE MENU</h2>
+			<h2 id="pic">RECIPE MENU</h2>
 
 			<!-- Swiper -->
 			<div class="swiper-container mySwiper">
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper" >
 
 					<span class="swiper-slide" th:each="recipe:${session.Recipe}">
-						<img th:src="@{${'img/' + recipe.image}}" />
+					<a th:href ="@{'/'+${recipe.dish}+'/details'}">	<img th:src="@{${'img/' + recipe.image}}" /></a>
 					</span>
 				</div>
 				<div class="swiper-button-next"></div>
