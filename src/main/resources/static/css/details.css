@@ -52,6 +52,14 @@ h3{
 	font-family: 'Oswald', sans-serif; /*フォント*/
 }
 
+h4{
+	position:relative;
+	top:20px;
+	left:0px;
+	font-size: 1.2em;
+	font-family: 'Open Sans', sans-serif;/*フォント*/
+}
+
 h6{
 	position:relative;
 	top:100px;
