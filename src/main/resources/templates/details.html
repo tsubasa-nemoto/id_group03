@@ -68,9 +68,10 @@
 							<th>名前</th>
 							<th>書き込み</th>
 						</tr>
-						<tr th:each="rev:${reviewList}">
-							<td th:text="${rev.name}"></td>
-							<td th:utext="${rev.review}"></td><!-- utextはタグをタグとして認識する機能 -->
+						<tr th:each="i:${#numbers.sequence(0, 2)}">
+						 <th:block th:if="${#lists.size(reviewList) gt __${i}__}">
+							<td th:text="${reviewList[__${i}__].name}"></td>
+							<td th:utext="${reviewList[__${i}__].review}"></td><!-- utextはタグをタグとして認識する機能 -->
 						</tr>
 					</table>
 			</div>
