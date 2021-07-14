@@ -339,30 +339,40 @@ h2:before {
 	top: 20px;
 	left:645px
 }
-.review{font-family:'Noto Sans JP', sans-serif;
-}
-table{
-  border-collapse:separate;
-  border-spacing: 5px;
-  width: 100%;
+
+.review{
+	font-family:'Noto Sans JP', sans-serif;
 }
 
-table th,table td{
+table{
+  /*border-collapse:separate;*/
+  border-spacing: 0px;
+  width: 100%;
+  margin:auto;
+}
+
+/*table th,table td{
   border-radius: 5px;
   text-align: center;
   padding: 10px 0;
-}
+}*/
 
 table th{
-  background-color: #c79852;
+	border-bottom:soild 2px #f2e975;
+	padding:10px 0;
+  /*background-color: #c79852;
   color: white;
-  border:solid 1px #927141;
+  border:solid 1px #927141;*/
 }
 
 table td{
-  background-color: #e4d4bc;
-  border:solid 1px #af9d85;
+	border-bottom:soild 2px #eeeeee;
+	padding:10px 0;
+	text-align:center;
+  /*background-color: #e4d4bc;
+  border:solid 1px #af9d85;*/
 }
+
 footer {
 	height: 100px;
 	background: black;

@@ -62,11 +62,11 @@
 
 				<span th:text="${recipe.recipe}" class="text"></span>
 
-				<a th:href="'/'+${recipe.dish}+'/review'">レビュー詳細</a>
-					<table style="width: 100%;" border="1" class="review">
+				<a class="LS" th:href="'/'+${recipe.dish}+'/review'">レビューを追加</a>
+					<table style="width: 70%;"  class="review">
 						<tr>
-							<th>名前</th>
-							<th>書き込み</th>
+							<th>NAME</th>
+							<th>REVIEW</th>
 						</tr>
 						<tr th:each="i:${#numbers.sequence(0, 2)}">
 						 <th:block th:if="${#lists.size(reviewList) gt __${i}__}">

@@ -19,12 +19,12 @@
 }
 
 .side {
-	width:800px;
+	width:650px;
 	height:350px;
 }
 
 .under {
-	width:800px;
+	width:650px;
 	height:350px;
 }
 
@@ -80,14 +80,20 @@ h6{
 
 .text {
 	position:relative;
-	top:0px;
+	top:50px;
 	right:0px;
 }
 
 .review {
 	position:relative;
-	top:0px;
-	right:0px;
+	top:140px;
+	right:100px;
+}
+
+.LS {
+	position:relative;
+	top:120px;
+	right:115px;
 }
 
 /*
@@ -136,7 +142,7 @@ h6{
 	align-items: center;
 	position: relative;
 	top:-250px;
-	left:-90px;
+	left:-50px;
 	margin: 100px auto;
 	width: 150px;
 	height: 150px;
