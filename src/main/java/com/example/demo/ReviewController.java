@@ -63,11 +63,13 @@ public class ReviewController {
 		Optional<Recipe> A=recipeRepository.findByDish(dish);
 		Recipe R =A.get();
 		int code=R.getCode();
-		String name=(String)session.getAttribute("userInfo");
+		Users user=(Users)session.getAttribute("userInfo");
+		String name=user.getName();
 		Review rev=new Review(code,review,name);
-		List<Review>Rlist=reviewRepository.findByCode(code);
 		reviewRepository.saveAndFlush(rev);
-		mv.addObject("recipe",A);
+		List<Review>Rlist=reviewRepository.findByCode(code);
+
+		mv.addObject("recipe",R);
 		mv.addObject("reviewList",Rlist);
 		mv.setViewName("review");
 		return mv;

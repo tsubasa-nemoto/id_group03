@@ -6,6 +6,8 @@
 
 @import
 	url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
 
 /* fontawesome */
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
@@ -337,7 +339,30 @@ h2:before {
 	top: 20px;
 	left:645px
 }
+.review{font-family:'Noto Sans JP', sans-serif;
+}
+table{
+  border-collapse:separate;
+  border-spacing: 5px;
+  width: 100%;
+}
 
+table th,table td{
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+table th{
+  background-color: #c79852;
+  color: white;
+  border:solid 1px #927141;
+}
+
+table td{
+  background-color: #e4d4bc;
+  border:solid 1px #af9d85;
+}
 footer {
 	height: 100px;
 	background: black;

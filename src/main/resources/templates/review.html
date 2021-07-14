@@ -9,10 +9,11 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap"
+	rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link href='https://css.gg/bookmark.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
-
 </head>
 <body>
 	<header>
@@ -36,6 +37,7 @@
 			<th>名前</th>
 			<th>書き込み</th>
 		</tr>
+		<hr>
 		<tr th:each="rev:${reviewList}">
 			<td th:text="${rev.name}"></td>
 			<td th:utext="${rev.review}"></td>
