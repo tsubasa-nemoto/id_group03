@@ -13,6 +13,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link href='https://css.gg/bookmark.css' rel='stylesheet'>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -25,7 +27,9 @@
 			<span th:replace="menu"></span>
 		</header>
 
-		<div class="container">
+	<div class="container">
+
+		<div class="container1">
 
 			<div class="main">left
 				<a> <img th:src="@{${'/img/' + recipe.image}}" id="detail_image">
@@ -36,15 +40,26 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div class="container2">
+
 			<div class="side">right
 				<h1 th:text="${recipe.dish}" class="H"></h1>
 				<br>
+				<h3>Level</h3>
+				<br>
+				<h6>easy👌</h6>
+
+				<div class="v_line_fix"></div>
 
 				<div class="pie"><span>35min.</span></div>
+			</div>
 
+			<div class="under">under
 				<span th:text="${recipe.recipe}" class="text"></span>
 
-				<a th:href="${recipe.dish}+'/review'">レビュー詳細</a>
+				<a th:href="'/'+${recipe.dish}+'/review'">レビュー詳細</a>
 					<table style="width: 100%;" border="1" class="review">
 						<tr>
 							<th>名前</th>
@@ -58,6 +73,7 @@
 			</div>
 
 		</div>
+	</div>
 
 </body>
 </html>
