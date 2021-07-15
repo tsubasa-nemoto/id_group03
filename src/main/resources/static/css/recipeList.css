@@ -71,22 +71,29 @@
   height: 30px;
   padding: 10px;
   font-size: 25px;
-  color: #fd6259;
+  color: #c0c0c0;
   text-align: center;
   border-radius: 50%;
+  box-shadow:0 3px 0 #efefef;
+  transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
 }
 
 .fa-heart {
   background: #f7f7f7;
 }
 
-.f-icon:hover {
-	background:#f7f7f7;
+.fa-heart:hover {
+	background: #f7f7f7;
+
+	transform: translateY(3px);
 }
 
-.fa-heart:hover {
-	color:#fd6259;
+.f-icon:hover {
+	color: #fb4f4f;
+	transform: translateY(3px);
 }
+
+
 
 
 
