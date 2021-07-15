@@ -43,7 +43,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 				</a>
 
 				<div  class="favorite" >
-				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart"></i></a>
+				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:if="${session.fav}"></i><i th:unless="${session.fav}"></i></a>
 				</div>
 			</div>
 

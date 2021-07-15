@@ -74,7 +74,7 @@ public class RecipeController {
 			ModelAndView mv) {
 		// セッション情報はクリアする
 		Users user = (Users) session.getAttribute("userInfo");
-
+		boolean fav;
 		if (user == null) {
 			mv.addObject("message", "お気に入り機能を利用するにはログインしてください");
 			mv.setViewName("login");
@@ -96,7 +96,7 @@ public class RecipeController {
 			Favorite F=Fdish.get();
 
 			int id = F.getId();
-			boolean fav;
+
 			if (F.getFav()) {
 				fav = false;
 			} else {
@@ -105,6 +105,7 @@ public class RecipeController {
 			Favorite FAV = new Favorite(id, dish, user.getName(), fav);
 			favoriteRepository.saveAndFlush(FAV);
 		}
+		session.setAttribute("fav", fav);
 		List<Favorite> list = favoriteRepository.findByFav(true);
 		session.setAttribute("favorite", list);
 
