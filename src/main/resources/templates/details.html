@@ -29,6 +29,13 @@
 
 	<div class="container">
 
+<script type="text/javascript">
+	function favorite() {
+
+location.href="favorite?prev=''"+ encodeURIComponent(location.href);
+	}
+
+</script>
 		<div class="container1">
 
 			<div class="main">left
@@ -36,7 +43,7 @@
 				</a>
 
 				<div  class="favorite" >
-				<a href="#" class="favorite2"><i class="f-icon far fa-heart"></i></a>
+				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart"></i></a>
 				</div>
 			</div>
 

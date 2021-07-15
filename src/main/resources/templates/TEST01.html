@@ -63,7 +63,7 @@ width:3em;
 		<div class="swiper-wrapper">
 
 				<div class="swiper-slide"th:each="recipe:${session.Recipe}">
-					<p class="last"><img th:src="@{${'img/' + recipe.image}}" /></p>
+					<p class="last"><img th:src="@{${'/img/' + recipe.image}}" /></p>
 				</div>
 </div>
 <!--

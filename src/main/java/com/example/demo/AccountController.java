@@ -78,6 +78,7 @@ public class AccountController {
 				if (truePass.equals(password)) {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
+
 					mv.setViewName("redirect:"+session.getAttribute("prev"));
 					return mv;
 				}

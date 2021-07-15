@@ -68,39 +68,47 @@ public class RecipeController {
 		return mv;
 	}
 
-	@RequestMapping("{dish}/details/fav")
+	@RequestMapping("{dish}/favorite")
 	public ModelAndView fav(@PathVariable(name = "dish") String dish,
-			@RequestParam(name="prev",defaultValue = "/main")String prev,
+			@RequestParam(name = "prev", defaultValue = "/main") String prev,
 			ModelAndView mv) {
 		// セッション情報はクリアする
-		session.setAttribute("prev", prev);
-Users user=(Users)session.getAttribute("userInfo");
+		Users user = (Users) session.getAttribute("userInfo");
 
-if(user==null) {
-			mv.addObject("message","お気に入り機能を利用するにはログインしてください");
+		if (user == null) {
+			mv.addObject("message", "お気に入り機能を利用するにはログインしてください");
 			mv.setViewName("login");
-		}else {				List<Favorite> LFavorite=favoriteRepository.findByDishAndName(dish,user.getName());
-			if(LFavorite==null) {
-		Favorite FAV=new Favorite(dish,user.getName(),false);
-		favoriteRepository.saveAndFlush(FAV);
-			}
+//set prev /"+dish+"/details"
+		session.setAttribute("prev",dish+"/details");
+
+			return mv;
 
 
-			List<Favorite> Fdish=favoriteRepository.findByDishAndName(dish,user.getName());
-			Favorite F=Fdish.get(0);
 
-
-				int id=F.getId();
-				boolean fav;
-				if(F.getFav()) {fav=false;
-				}else {fav=true;}
-				Favorite FAV=new Favorite(id,dish,user.getName(),fav);
+		} else {
+			List<Favorite> LFavorite = favoriteRepository.findByDishAndNameLike(dish, user.getName());
+			if (LFavorite == null) {
+				Favorite FAV = new Favorite(dish, user.getName(), false);
 				favoriteRepository.saveAndFlush(FAV);
 			}
-		List<Favorite> list=favoriteRepository.findByFav(true);
-		session.setAttribute("favorite", list);
-		mv.setViewName("redirect:"+session.getAttribute("prev"));
 
+			Optional<Favorite> Fdish = favoriteRepository.findByDishAndName(dish, user.getName());
+			Favorite F=Fdish.get();
+
+			int id = F.getId();
+			boolean fav;
+			if (F.getFav()) {
+				fav = false;
+			} else {
+				fav = true;
+			}
+			Favorite FAV = new Favorite(id, dish, user.getName(), fav);
+			favoriteRepository.saveAndFlush(FAV);
+		}
+		List<Favorite> list = favoriteRepository.findByFav(true);
+		session.setAttribute("favorite", list);
+
+mv.setViewName("redirect:/"+dish+"/details");
 		return mv;
 	}
 }
