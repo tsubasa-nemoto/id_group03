@@ -3,6 +3,7 @@
 @import url('https://css.gg/search.css');
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700");
 
 @import
 	url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
@@ -44,7 +45,7 @@ form:not(.review){
 	background: #fdfdfd;
 	border: none;
 	color: #000000;
-	font-family: 'Open Sans', sans-serif; /*フォント*/
+	font-family:'Noto Sans JP', sans-serif; /*フォント*/
 	font-size: 1em;
 	height: 45px;
 	transition: border-color 0.3s; /*カーソルに乗せたときの色、大きさなどの変化*/
@@ -208,6 +209,7 @@ ul.hamburger-demo-menulist li {
 	color: #333; /* メニューリストの文字色 */
 	display: block;
 	/*padding: .5em 0;*/
+	font-family:'Noto Sans JP', sans-serif;
 }
 
 a {
@@ -271,6 +273,7 @@ h1.tie {
 	padding: 1em 0; /*上下左右の幅*/
 	font-family: 'Montserrat Subrayada', sans-serif;
 	font-size: 3em;
+	font-family:'Noto Sans JP', sans-serif;
 }
 
 .main2 {
@@ -283,11 +286,11 @@ h1.tie {
 h2 {
   position: relative;
   top:35px;
-  left:515px;
+  left:528px;
   display: inline-block;
   margin-bottom: 1em;
-  font-size:30px;
-  font-family: 'Open Sans', sans-serif; /*フォント*/
+  font-size:2em;
+  font-family: 'Roboto Condensed', sans-serif;/*フォント*/
 }
 h2:before {
   content: '';
@@ -315,34 +318,6 @@ h2:before {
 	font-family:'Noto Sans JP', sans-serif;
 }
 
-table{
-  /*border-collapse:separate;*/
-  border-spacing: 0px;
-  width: 100%;
-  margin:auto;
-}
-
-/*table th,table td{
-  border-radius: 5px;
-  text-align: center;
-  padding: 10px 0;
-}*/
-
-table th{
-	border-bottom:soild 2px #f2e975;
-	padding:10px 0;
-  /*background-color: #c79852;
-  color: white;
-  border:solid 1px #927141;*/
-}
-
-table td{
-	border-bottom:soild 2px #eeeeee;
-	padding:10px 0;
-	text-align:center;
-  /*background-color: #e4d4bc;
-  border:solid 1px #af9d85;*/
-}
 
 footer {
 	height: 100px;

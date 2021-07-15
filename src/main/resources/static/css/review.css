@@ -1,0 +1,125 @@
+@charset "UTF-8";
+@import url('https://css.gg/search.css');
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+
+@import
+	url(https://fonts.googleapis.com/css?family=Montserrat+Subrayada);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700");
+
+
+/* fontawesome */
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+.container3 {
+	display:flex;
+}
+
+.main3{
+	width:700px;
+	height:800px;
+}
+
+.side2 {
+	width:650px;
+	height:800px;
+}
+
+#detail_image2 {
+	height: 480px;
+	width: 470px;
+	position: relative;
+	left: 70px;
+	top: 120px;
+	border-radius: 15px; /*角を丸める*/
+}
+h3 {
+	font-family: 'Roboto Condensed', sans-serif;/*フォント*/
+	font-size:30px;
+	position:relative;
+	top:135px;
+	left:300px;
+}
+
+a.back {
+  position: relative;
+  top:-29em;
+  left:15px;
+  color: #000000;
+  font-weight: bold;
+  background: #efefef;
+  padding: 15px 20px 15px 40px;
+  border-radius: 45px;
+}
+a.back:before {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  border-top: 3px solid #000000;
+  border-right: 3px solid #000000;
+  -webkit-transform: translateY(-50%) rotate(135deg);
+  transform: translateY(-50%) rotate(225deg);
+}
+
+
+.comment {
+  box-sizing: border-box;
+  width: 80%;
+  height: 35px;
+  padding: 3px 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+  border: solid 2px #eaeaea;
+  border-radius: 8px;
+  outline: 0;
+  transition: 0.3s;
+  -webkit-appearance: none;
+  font-family:'Noto Sans JP', sans-serif;
+}
+
+.send {
+	position:relative;
+	top:-17px;
+	right:3px;
+	height:35px;
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  user-select: none;
+  border: none;
+  border-radius: 8px;
+  background:#23c77d;
+  font-family:'Noto Sans JP', sans-serif;
+}
+
+.send:hover {
+  opacity: 0.5;
+}
+
+/*テーブル*/
+table{
+  width: 100%;
+  border-spacing: 0;
+
+}
+
+table th{
+  border-bottom: solid 2px #f1e769;
+  padding: 10px 0;
+}
+
+table td{
+  border-bottom: solid 2px #ddd;
+  text-align: center;
+  padding: 10px 0;
+  font-family:'Noto Sans JP', sans-serif;
+}
+

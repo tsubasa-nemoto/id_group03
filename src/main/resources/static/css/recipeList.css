@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "https://use.fontawesome.com/releases/v5.13.0/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
 
 .card-group {
 	display: flex;
@@ -39,6 +40,7 @@
     .content4 {
         padding: 10px;
         color: #666;
+        font-family:'Noto Sans JP', sans-serif;
     }
     .box4 {
         display: flex;
@@ -52,6 +54,7 @@
         border: 2px solid #25de9d;
         color: #25de9d;
         background-color: transparent;
+        font-family:'Noto Sans JP', sans-serif;
     }
 
 /* お気に入りボタン*/

@@ -15,11 +15,15 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap"rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link href='https://css.gg/bookmark.css' rel='stylesheet'>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 <link rel="stylesheet" media="all" th:href="@{/css/details.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/review.css}" />
+
 </head>
 <body>
 
@@ -43,7 +47,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 				</a>
 
 				<div  class="favorite" >
-				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:if="${session.fav}"></i><i th:unless="${session.fav}"></i></a>
+				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:if="${session.fav}"></i><i th:unless="${session.fav}" class="if-icon far fa-heart"></i></a>
 				</div>
 			</div>
 
@@ -54,26 +58,30 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 			<div class="side">right
 				<h1 th:text="${recipe.dish}" class="H"></h1>
 				<br>
-				<h3>Level</h3>
+				<h3 class="lv">Level</h3>
 				<br>
 				<h6>easy👌</h6>
 
 				<div class="v_line_fix"></div>
 
 				<div class="pie"><span>35min.</span></div>
+
 			</div>
 
 			<div class="under">under
 
-				<h4>RECIPE</h4>
+				<h4 class="recipedayo">RECIPE</h4>
 
 				<span th:text="${recipe.recipe}" class="text"></span>
 
-				<a class="LS" th:href="'/'+${recipe.dish}+'/review'">レビューを追加</a>
-					<table style="width: 70%;"  class="review">
+
+				<h4 class="reviewdayo">REVIEW</h4>
+
+
+					<table style="width: 70%;"  class="review2">
 						<tr>
 							<th>NAME</th>
-							<th>REVIEW</th>
+							<th>COMMENT</th>
 						</tr>
 						<tr th:each="i:${#numbers.sequence(0, 2)}">
 						 <th:block th:if="${#lists.size(reviewList) gt __${i}__}">
@@ -81,6 +89,8 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 							<td th:utext="${reviewList[__${i}__].review}"></td><!-- utextはタグをタグとして認識する機能 -->
 						</tr>
 					</table>
+
+					<a class="LS" th:href="'/'+${recipe.dish}+'/review'">レビューを追加</a>
 			</div>
 
 		</div>

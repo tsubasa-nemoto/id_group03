@@ -11,40 +11,51 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link href='https://css.gg/bookmark.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/review.css}" />
 </head>
 <body>
 	<header>
 		<span th:replace="menu"></span>
 	</header>
 
-	<h1 th:text="${recipe.dish}"></h1>
-	<span th:text="${mes}"></span>
-	<div th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
-		<form th:action="@{'/'+${recipe.dish}+'/review'}" method="post" class="review">
-			<input type="hidden" name="dish" th:value="${recipe.dish}">
-			<textarea name="review" placeholder="書き込み"></textarea>
-			<p>
-				<input type="submit" value="投稿する">
-			</p>
-		</form>
+	<div class="container3">
+		<div class="main3">main
+			<a><img th:src="@{${'/img/' + recipe.image}}" id="detail_image2"></a>
+			<h3 th:text="${recipe.dish}" class="rev"></h3>
+			<a class="back" th:href="'/'+ ${recipe.dish} +'/details'">BACK</a>
+		</div>
+
+		<div class="side2">side
+		<br>
+		<br>
+		<br>
+
+			<span th:text="${mes}"></span>
+			<div th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
+				<form th:action="@{'/'+${recipe.dish}+'/review'}" method="post" class="review">
+					<input type="hidden" name="dish" th:value="${recipe.dish}">
+					<textarea  class="comment" name="review" placeholder="コメントを書く"></textarea>
+						<input  class="send" type="submit" value="送信">
+				</form>
+			</div>
+
+			<table style="width: 100%;" border="1" class="review"> <!-- レビュー表示 -->
+				<tr>
+					<th>NAME</th>
+					<th>COMMENT</th>
+				</tr>
+				<tr th:each="rev:${reviewList}">
+					<td th:text="${rev.name}"></td>
+					<td th:utext="${rev.review}"></td>
+					<!-- utextはタグをタグとして認識する機能 -->
+				</tr>
+			</table>
+		</div>
 	</div>
-
-	<table style="width: 70%;" border="1" class="review"> <!-- レビュー表示 -->
-		<tr>
-			<th>名前</th>
-			<th>書き込み</th>
-		</tr>
-		<hr>
-		<tr th:each="rev:${reviewList}">
-			<td th:text="${rev.name}"></td>
-			<td th:utext="${rev.review}"></td>
-			<!-- utextはタグをタグとして認識する機能 -->
-		</tr>
-	</table>
-
 
 	<hr>
 </body>
