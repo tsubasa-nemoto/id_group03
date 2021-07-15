@@ -19,7 +19,9 @@ location.href="/login?prev="+ encodeURIComponent(location.href);
 	function logout(){
 		location.href="/logout?prev="+ encodeURIComponent(location.href);
 	}
-
+	function signup(){
+		location.href="/signup?prev="+ encodeURIComponent(location.href);
+	}
 </script>
 <!-- ↓ハンバーガーメニュー↓ -->
 <div class="hamburger-demo-menubox">
@@ -30,7 +32,7 @@ location.href="/login?prev="+ encodeURIComponent(location.href);
 	</label>
 	<div class="hamburger-demo-menuwrap">
 		<ul class="hamburger-demo-menulist">
-			<li><a href="/signup">新規会員登録</a></li>
+			<li><a href="#" onClick="signup()">新規会員登録</a></li>
 			<li><a href="#">お気に入り</a></li>
 			<li><a href="#">詳細検索</a></li>
 			<li th:if="${session.userInfo==null}"><a href="#" onClick="login()">ログイン</a></li>

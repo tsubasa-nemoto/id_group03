@@ -31,7 +31,7 @@
 				<img th:src="@{${'img/' + recipe.image}}" class="image4">
 				<p th:text="${recipe.dish}" class="title4"></p>
 				<p class="content4">お気に入り追加</p>
-				<a href="#" class="favorite2" onClick="favorite()"><i class="f-icon far fa-heart"></i></a>
+				<a th:href="${recipe.dish}+'/favorite?prev=search'" class="favorite2" onClick="favorite()"><i class="f-icon far fa-heart"></i></a>
 
 				<div class="box4">
 					<button class="continue4"
@@ -58,7 +58,8 @@
 <script type="text/javascript">
 	function favorite() {
 
-location.href="''+${recipe.dish}/favorite?prev=''"+ encodeURIComponent(location.href);
+location.href="pancake/favorite?prev='" + encodeURIComponent(location.href);
+alert(location.href);
 	}
 </script>
 </body>

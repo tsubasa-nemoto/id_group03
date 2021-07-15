@@ -27,21 +27,29 @@ public class AccountController {
 	 * ログイン画面を表示
 	 */
 	@RequestMapping("/login")
-	public String login(@RequestParam(name="prev",defaultValue = "/main")String prev ) {
+	public String login(@RequestParam(name = "prev", defaultValue = "/main") String prev) {
 		// セッション情報はクリアする
+		System.out.println(session.getAttribute("prev"));
+		String pre = (String) session.getAttribute("prev");
 		session.invalidate();
-
-		session.setAttribute("prev", prev);
-
+		System.out.println(prev);
+		System.out.println(pre);
+		if (pre == null) {
+			session.setAttribute("prev", prev);
+		} else {
+			session.setAttribute("prev", pre);
+		}
+		System.out.println(session.getAttribute("prev"));
 		return "login";
 	}
+
 	@RequestMapping("/logout")
 	public ModelAndView logout(ModelAndView mv,
-			@RequestParam(name="prev",defaultValue = "/main")String prev ) {
+			@RequestParam(name = "prev", defaultValue = "/main") String prev) {
 		// userInfoのセッション情報はクリアする
 
 		session.removeAttribute("userInfo");
-		mv.setViewName("redirect:"+prev);
+		mv.setViewName("redirect:" + prev);
 
 		return mv;
 	}
@@ -78,8 +86,11 @@ public class AccountController {
 				if (truePass.equals(password)) {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
+					String prev = (String) session.getAttribute("prev");
+					session.removeAttribute("prev");
+					System.out.println(prev);
+					mv.setViewName("redirect:" + prev);
 
-					mv.setViewName("redirect:"+session.getAttribute("prev"));
 					return mv;
 				}
 				// 空の場合にエラーとする
@@ -199,11 +210,7 @@ public class AccountController {
 		//ランダム要素の追加の検討
 		//DBから要素の取り出しセットを行う
 		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
-
-
-				session.setAttribute("URL2", "lime-juice.jpg");
-				session.setAttribute("URL3", "pumpkin-soup.jpg");
-				session.setAttribute("URL4", "small-salad.jpg");
+		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
 		mv.setViewName("top");
 		return mv;

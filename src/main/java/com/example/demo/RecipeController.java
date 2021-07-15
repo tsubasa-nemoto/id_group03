@@ -30,11 +30,19 @@ public class RecipeController {
 	 */
 	@RequestMapping("/search")
 	public ModelAndView searchitems(
-			@RequestParam("search") String dish,
+			@RequestParam(name = "search", defaultValue = "") String dish,
 			ModelAndView mv) {
+		boolean a =(boolean)session.getAttribute("Frag");
+		if(a) {
+			dish=(String)session.getAttribute("searchResult");
+			a=false;
+			session.setAttribute("Frag", a);
+		}
 
 		List<Recipe> recipeList = null;//nullを入れて中身を空っぽに
 		recipeList = recipeRepository.findAll();
+
+		System.out.println(dish);
 		if (dish.equals("")) {//すべて空白だったら
 			recipeList = recipeRepository.findAll();//全件検索
 			mv.addObject("mes", "レシピ一覧");
@@ -42,7 +50,7 @@ public class RecipeController {
 		} else if (!dish.equals("")) {//nameが空白でないとき
 			recipeList = recipeRepository.findByDishLike("%" + dish + "%");//あいまい検索で表示
 			mv.addObject("mes", dish + "の検索結果");
-
+			session.setAttribute("searchResult",dish);
 		}
 
 		mv.addObject("recipes", recipeList);//itemListをitems(list.htmlのth:eachのところ)に格納
@@ -72,18 +80,20 @@ public class RecipeController {
 	public ModelAndView fav(@PathVariable(name = "dish") String dish,
 			@RequestParam(name = "prev", defaultValue = "/main") String prev,
 			ModelAndView mv) {
-		// セッション情報はクリアする
+		System.out.println(prev);	//前のページの情報を保持
 		Users user = (Users) session.getAttribute("userInfo");
 		boolean fav;
+		int result = prev.indexOf("0/") + 1;
+		String Return = prev.substring(result);
 		if (user == null) {
 			mv.addObject("message", "お気に入り機能を利用するにはログインしてください");
 			mv.setViewName("login");
-//set prev /"+dish+"/details"
-		session.setAttribute("prev",dish+"/details");
 
+			session.setAttribute("prev",Return ); //searchのためのリターンの値
+			System.out.println(session.getAttribute("searchResult"));
+			boolean frg=true;//検索の実行の確認
+			session.setAttribute("Frag",frg);
 			return mv;
-
-
 
 		} else {
 			List<Favorite> LFavorite = favoriteRepository.findByDishAndNameLike(dish, user.getName());
@@ -93,8 +103,7 @@ public class RecipeController {
 			}
 
 			Optional<Favorite> Fdish = favoriteRepository.findByDishAndName(dish, user.getName());
-			Favorite F=Fdish.get();
-
+			Favorite F = Fdish.get();
 			int id = F.getId();
 
 			if (F.getFav()) {
@@ -105,11 +114,18 @@ public class RecipeController {
 			Favorite FAV = new Favorite(id, dish, user.getName(), fav);
 			favoriteRepository.saveAndFlush(FAV);
 		}
+
+
 		session.setAttribute("fav", fav);
 		List<Favorite> list = favoriteRepository.findByFav(true);
 		session.setAttribute("favorite", list);
+		//お気に入り登録しているかの確認
 
-mv.setViewName("redirect:/"+dish+"/details");
+		boolean frg=true;//検索の実行の確認
+		session.setAttribute("Frag",frg);
+
+		System.out.println(Return);
+		mv.setViewName(Return);
 		return mv;
 	}
 }
