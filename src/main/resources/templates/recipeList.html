@@ -9,6 +9,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
 	rel="stylesheet">
 <link href='https://css.gg/search.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <link rel="stylesheet" media="all" th:href="@{/css/recipeList.css}" />
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 </head>
@@ -29,6 +30,7 @@
 				<img th:src="@{${'img/' + recipe.image}}" class="image4">
 				<p th:text="${recipe.dish}" class="title4"></p>
 				<p class="content4">お気に入り追加</p>
+				<a href="#" class="favorite2"><i class="f-icon far fa-heart"></i></a>
 
 				<div class="box4">
 					<button class="continue4"
@@ -46,7 +48,7 @@
 						thymeleafの機能を使ってonclickを動的に設定することができる
 						-->
 
-						レシピ詳細
+						レシピ詳細へ
 					</button>
 				</div>
 			</div>

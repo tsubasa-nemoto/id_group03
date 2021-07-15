@@ -109,7 +109,7 @@ h6{
 }*/
 
 
-/* Font Awesomeを使用しています。*/
+/* お気に入りボタン*/
 .favorite {
   align-items: center;
   justify-content: center;
@@ -135,7 +135,7 @@ h6{
   background: #ffffff;
 }
 
-
+/*時間の円*/
 .pie {
 	display: flex;
 	justify-content: center;
