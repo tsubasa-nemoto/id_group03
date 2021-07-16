@@ -1,19 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
 	<span th:replace="swiper"></span>
+</head>
+<body>
 
 <!-- TOP th:replace用 -->
 
 <!-- Swiper -->
+		<div class="swiper-parent">
+
+			<!-- Swiper START -->
 			<div class="swiper-container mySwiper">
+
+				<!-- メイン表示部分 -->
 				<div class="swiper-wrapper">
 
-					<span class="swiper-slide" th:each="recipe:${session.Recipe}">
+					<!-- 各スライド -->
+					<div class="swiper-slide" th:each="recipe:${session.Recipe}">
 						<img th:src="@{${'img/' + recipe.image}}" />
-					</span>
+					</div>
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
+				<!-- ページネーション -->
 				<div class="swiper-pagination"></div>
 			</div>
+			<!-- Swiper END -->
+
+				<!-- 前ページ -->
+				<div class="swiper-button-prev"></div>
+				<!-- 次ページ -->
+				<div class="swiper-button-next"></div>
+
+		</div>
 
 
 			<!-- Swiper JS -->
@@ -21,4 +40,6 @@
 
 			<!-- Initialize Swiper -->
 			<script type="text/javascript" th:src="@{/js/slide.js}"></script>
-		</div>
+
+</body>
+</html>

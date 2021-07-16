@@ -283,16 +283,16 @@ h1.tie {
 	background: #ffffff;
 }
 
-h2 {
+#pic {
   position: relative;
-  top:35px;
-  left:528px;
+  top:95px;
+  left:470px;
   display: inline-block;
   margin-bottom: 1em;
   font-size:2em;
   font-family: 'Roboto Condensed', sans-serif;/*フォント*/
 }
-h2:before {
+#pic:before {
   content: '';
   position: absolute;
   bottom: -15px;
@@ -318,10 +318,66 @@ h2:before {
 	font-family:'Noto Sans JP', sans-serif;
 }
 
+.main3 {
+	width:1200px;
+	margin:0 auto;
+	height: 900px;
+	background: #ffffff;
+}
+
+#pic2 {
+  position: relative;
+  top:10px;
+  left:470px;
+  display: inline-block;
+  margin-bottom: 1em;
+  font-size:2em;
+  font-family: 'Roboto Condensed', sans-serif;/*フォント*/
+}
+#pic2:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: black;
+  border-radius: 2px;
+}
+
 
 footer {
-	height: 100px;
-	background: black;
+	height: 200px;
+	background:#2d2d2d;
+}
+
+.footer2 {
+	position:relative;
+	top:135px;
+	text-align: center;
+	font-family: 'Montserrat Subrayada', sans-serif;
+	font-size:150%;
+	color:#fff;
+
+}
+
+.footer3 {
+	position:relative;
+	top:20px;
+	left:41em;
+	font-family:'Noto Sans JP', sans-serif;
+	color:#fff;
+}
+
+.footer4 {
+	position:relative;
+	top:20px;
+	left:43em;
+	font-family:'Noto Sans JP', sans-serif;
+	color:#fff;
 }
 
 /*スクロール*/
@@ -372,4 +428,103 @@ footer {
     transform: scale(1, 0);
     transform-origin: 0 100%;
   }
+}
+
+
+
+
+
+.card-group2 {
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+
+.card-group2 > :nth-child(2n){
+  margin-left: 20px;
+}
+
+.card-group2 > :nth-child(n+3){
+  margin-top: 20px;
+}
+
+.card5 {
+		width: calc((100% - 20px * 1) / 2);
+        width: 200px;
+        margin: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 3px 6px #ccc;
+    }
+    .image5 {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px 5px 0 0;
+    }
+    .title5 {
+        font-size: 150%;
+        margin: 10px;
+        color: #444;
+    }
+    .content5 {
+        padding: 10px;
+        color: #666;
+        font-family:'Noto Sans JP', sans-serif;
+        font-size: 10px;
+    }
+    .box5 {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .continue5 {
+        font-size: 83%;
+        margin: 8px;
+        padding: 8px;
+        border-radius: 5px;
+        border: 2px solid #25de9d;
+        color: #25de9d;
+        background-color: transparent;
+        font-family:'Noto Sans JP', sans-serif;
+    }
+
+/* お気に入りボタン*/
+.favorite3 {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position:relative;
+  top:-2px;
+  left:-4px;
+
+}
+
+.f-icon {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  font-size: 25px;
+  color: #c0c0c0;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow:0 3px 0 #efefef;
+  transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
+}
+
+.fa-heart {
+  background: #f7f7f7;
+}
+
+.fa-heart:hover {
+	background: #f7f7f7;
+
+	transform: translateY(3px);
+}
+
+.f-icon:hover {
+	color: #fb4f4f;
+	transform: translateY(3px);
 }

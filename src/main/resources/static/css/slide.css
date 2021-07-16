@@ -14,17 +14,31 @@
         padding: 0;
       }*/
 
+      .swiper-parent {
+		position: relative;
+		}
+
       .swiper-container {
-      	position:relative;
       	top:90px;
-        width: 80%;
-        height: 60%;
+
+        width:calc(80% - 50px);	/* ☆前・次ページボタンの幅をそれぞれ50pxとして、その分を引く */
+		padding-bottom: 50px;		/* ★ページネーション・スクロールバー分の余白50pxを下に取る */
+		box-sizing: content-box;
+      }
+
+      .swiper-wrapper {
+      	width:80%;
+      	height:380px;
       }
 
       .swiper-slide {
         text-align: center;
         font-size: 18px;
         background: #fff;
+
+
+
+
 
         /* Center slide text vertically */
         display: -webkit-box;
@@ -43,7 +57,24 @@
 
       .swiper-slide img {
         display: block;
-        width: 350px;
-        height: 500px;
+        width: 290px;
+        height: 350px;
         object-fit: cover;
       }
+
+
+		.swiper-pagination {
+			color:#edd843;
+		}
+
+		.swiper-button-prev {
+			color:#000000;
+			margin-top:44px;
+		}
+
+		.swiper-button-next {
+		color:#000000;
+		margin-top:44px;
+		}
+
+
