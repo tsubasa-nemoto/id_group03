@@ -27,7 +27,7 @@
 
 .under {
 	width:650px;
-	height:350px;
+	height:450px;
 }
 
 #detail_image {
@@ -94,12 +94,14 @@ h6{
 	position:relative;
 	top:50px;
 	right:0px;
+	font-family:'Noto Sans JP', sans-serif;
 }
 
 .review2 {
 	position:relative;
 	top:140px;
 	right:100px;
+	font-family: 'Roboto Condensed', sans-serif;/*フォント*/
 }
 
 /*レビューを追加*/

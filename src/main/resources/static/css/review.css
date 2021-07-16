@@ -38,10 +38,20 @@ h3 {
 	font-family: 'Roboto Condensed', sans-serif;/*フォント*/
 	font-size:30px;
 	position:relative;
-	top:135px;
+	top:-14em;
 	left:300px;
 }
 
+.user {
+	font-family:'Noto Sans JP', sans-serif;
+}
+
+hr {
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #fff;
+}
+
+/*戻るボタン*/
 a.back {
   position: relative;
   top:-29em;
@@ -106,6 +116,8 @@ a.back:before {
 
 /*テーブル*/
 table{
+	position:relative;
+	top:30px;
   width: 100%;
   border-spacing: 0;
 

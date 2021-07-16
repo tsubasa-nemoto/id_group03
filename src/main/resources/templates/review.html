@@ -34,8 +34,9 @@
 		<br>
 		<br>
 
-			<span th:text="${mes}"></span>
-			<div th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
+			<span class="user" th:text="${mes}"></span>
+			<div class="user" th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
+			<br>
 				<form th:action="@{'/'+${recipe.dish}+'/review'}" method="post" class="review">
 					<input type="hidden" name="dish" th:value="${recipe.dish}">
 					<textarea  class="comment" name="review" placeholder="コメントを書く"></textarea>
@@ -43,6 +44,7 @@
 				</form>
 			</div>
 
+			<hr>
 			<table style="width: 100%;" border="1" class="review"> <!-- レビュー表示 -->
 				<tr>
 					<th>NAME</th>
