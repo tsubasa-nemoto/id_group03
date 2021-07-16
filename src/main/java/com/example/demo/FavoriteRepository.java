@@ -11,5 +11,6 @@ public interface FavoriteRepository extends JpaRepository<Favorite,Integer>{
 Optional<Favorite> findByDishAndName(String dish,String name);
 List<Favorite> findByDishAndNameLike(String dish,String name);
 	List<Favorite> findByFav(boolean favo);
+	List <Favorite> findByNameAndFav(String name,boolean favo);
 
 }

@@ -28,8 +28,8 @@ public class AccountController {
 	 */
 	@RequestMapping("/login")
 	public String login(@RequestParam(name = "prev", defaultValue = "/main") String prev) {
-		// セッション情報はクリアする
-		System.out.println(session.getAttribute("prev"));
+		// ひとつ前に戻るための準備
+		System.out.println(session.getAttribute("prev"));//チェック
 		String pre = (String) session.getAttribute("prev");
 		session.invalidate();
 		System.out.println(prev);
@@ -86,6 +86,7 @@ public class AccountController {
 				if (truePass.equals(password)) {
 					// セッションスコープにログイン名とカテゴリ情報を格納する
 					session.setAttribute("userInfo", user);
+					session.setAttribute("Frag", false);
 					String prev = (String) session.getAttribute("prev");
 					session.removeAttribute("prev");
 					System.out.println(prev);

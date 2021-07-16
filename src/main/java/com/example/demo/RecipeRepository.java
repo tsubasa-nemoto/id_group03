@@ -11,4 +11,5 @@ public interface RecipeRepository extends JpaRepository<Recipe,Integer>{
 	List<Recipe> findByDishLike(String dish);
 	Optional<Recipe> findByDish(String dish);
 
+
 }
