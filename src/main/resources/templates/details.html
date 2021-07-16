@@ -45,6 +45,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 			<div class="main">left
 				<a> <img th:src="@{${'/img/' + recipe.image}}" id="detail_image">
 				</a>
+				<a class="back2" href="/search">BACK</a>
 
 				<div  class="favorite" >
 				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:if="${session.fav}"></i><i th:unless="${session.fav}" class="if-icon far fa-heart"></i></a>
@@ -60,7 +61,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 				<br>
 				<h3 class="lv">Level</h3>
 				<br>
-				<h6>easy👌</h6>
+				<h6 class="difficult" >easy👌</h6>
 
 				<div class="v_line_fix"></div>
 
@@ -95,6 +96,10 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 
 		</div>
 	</div>
+
+		<footer>
+			<span th:replace="menu2"></span>
+		</footer>
 
 </body>
 </html>

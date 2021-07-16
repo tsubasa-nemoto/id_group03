@@ -88,6 +88,18 @@
   transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
 }
 
+.if-icon {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  font-size: 25px;
+  color: #fb4f4f;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow:0 3px 0 #efefef;
+  transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
+}
+
 .fa-heart {
   background: #f7f7f7;
 }

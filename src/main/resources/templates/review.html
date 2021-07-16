@@ -23,7 +23,7 @@
 	</header>
 
 	<div class="container3">
-		<div class="main3">main
+		<div class="main8">main
 			<a><img th:src="@{${'/img/' + recipe.image}}" id="detail_image2"></a>
 			<h3 th:text="${recipe.dish}" class="rev"></h3>
 			<a class="back" th:href="'/'+ ${recipe.dish} +'/details'">BACK</a>
@@ -60,5 +60,9 @@
 	</div>
 
 	<hr>
+
+		<footer>
+			<span th:replace="menu2"></span>
+		</footer>
 </body>
 </html>
