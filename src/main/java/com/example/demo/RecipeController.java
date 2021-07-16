@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,11 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-
-
-
-
 
 @Controller
 public class RecipeController {
@@ -39,29 +35,26 @@ public class RecipeController {
 			ModelAndView mv) {
 		//sessionが途切れた場合の処理
 
-		System.out.println(dish + "dish38");
 		//aがtrueなら遷移前ページの検索情報を取得
 		boolean a = (boolean) session.getAttribute("Frag");
 
 		boolean b = false;
 
-					if (a) {
-							if (dish.equals(null) || dish.length() == 0) {
-								dish = (String) session.getAttribute("searchResult");
-							}
-							else {
-								session.removeAttribute("searchResult");
-							}
+		if (a) {
+			if (dish.equals(null) || dish.length() == 0) {
+				dish = (String) session.getAttribute("searchResult");
+			} else {
+				session.removeAttribute("searchResult");
+			}
 
-							a = false;
-					session.removeAttribute("searchResult");
-					session.setAttribute("Frag", a);
-					b = true;
-					}
+			a = false;
+			session.removeAttribute("searchResult");
+			session.setAttribute("Frag", a);
+			b = true;
+		}
 
 		List<Recipe> recipeList = null;//nullを入れて中身を空っぽに
 		recipeList = recipeRepository.findAll();
-
 
 		if (dish == null || dish.length() == 0) {//すべて空白だったら
 			recipeList = recipeRepository.findAll();//全件検索
@@ -73,7 +66,6 @@ public class RecipeController {
 			recipeList = recipeRepository.findByDishLike("%" + dish + "%");//あいまい検索で表示
 			mv.addObject("mes", dish + "の検索結果");
 
-
 			if (b == false) {//検索が一回目なら
 				session.setAttribute("searchResult", dish);
 			}
@@ -82,8 +74,6 @@ public class RecipeController {
 		//mv.addObject("search", dish);//テキストボックスに保持(menu.htmlのth:valueで格納するキーをつくる)
 		session.setAttribute("recipes", recipeList);
 		mv.setViewName("/recipeList");//list.htmlで表示
-
-
 
 		return mv;
 	}
@@ -105,7 +95,7 @@ public class RecipeController {
 		return mv;
 	}
 
-	@RequestMapping("{dish}/favorite")	//お気に入り用メソッド
+	@RequestMapping("{dish}/favorite") //お気に入り用メソッド
 	public ModelAndView fav(@PathVariable(name = "dish") String dish,
 			@RequestParam(name = "prev", defaultValue = "/main") String prev,
 			ModelAndView mv) {
@@ -175,15 +165,15 @@ public class RecipeController {
 		mv.setViewName("redirect:" + Return);
 		return mv;
 	}
+
 	@RequestMapping("/favomenu")
 	public ModelAndView favomenu(@RequestParam(name = "prev", defaultValue = "/main") String prev,
-		ModelAndView mv	) {
+			ModelAndView mv) {
 		Users user = (Users) session.getAttribute("userInfo");
 		int result = prev.indexOf("0/") + 1;
 		String Return = prev.substring(result);//前のページの8080/以降のデータ取得
 
-		if(user==null)
-		{
+		if (user == null) {
 			session.setAttribute("prev", Return); //searchのためのリターンの値
 
 			boolean frg;
@@ -196,29 +186,37 @@ public class RecipeController {
 
 			mv.addObject("message", "お気に入り機能を利用するにはログインしてください");
 			mv.setViewName("login");
-		}else {
-			String userName=user.getName();
-			List<Favorite> list = favoriteRepository.findByNameAndFav(userName,true);
-			session.setAttribute("List", "");
-			List<Recipe> LL = null;//nullを入れて中身を空っぽに
-			LL = recipeRepository.findAll();
-			for(Favorite L:list) {
+		} else {
+			String userName = user.getName();
+			List<Favorite> list = favoriteRepository.findByNameAndFav(userName, true);
+			System.out.println(list + "LIST");
+			int num = 0;
+			for (Favorite L : list) {
 
-//
-//				LL=recipeRepository.findByDishLike(list.getDish());
-//
-//
-//
-//				session.setAttribute("List", List);
+				List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
+				System.out.println(LL + "LL");
+
+				List<Recipe> RList = new ArrayList<Recipe>();
+
+				if (num != 0) {
+					RList = (List<Recipe>) session.getAttribute("LL");
+					RList.addAll(LL);
+					session.setAttribute("LL", RList);
+				} else {
+					session.setAttribute("LL", LL);
+				}
+				System.out.println(session.getAttribute("LL"));
+
+				num++;
 			}
-			List<Recipe> Rlist=(List<Recipe>)session.getAttribute("List");
+
+			List<Recipe> Rlist = (List<Recipe>) session.getAttribute("LL");
 			mv.addObject("recipes", Rlist);
-			mv.addObject("mes","お気に入り");
+			mv.addObject("mes", "お気に入り");
 			mv.setViewName("recipeList");
 
 		}
 
-
-return mv		;
+		return mv;
 	}
 }
