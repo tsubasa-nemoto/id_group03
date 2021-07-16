@@ -48,7 +48,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 				<a class="back2" href="/search">BACK</a>
 
 				<div  class="favorite" >
-				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:if="${session.fav}"></i><i th:unless="${session.fav}" class="if-icon far fa-heart"></i></a>
+				<a href="#" class="favorite2"  onClick="favorite()"><i class="f-icon far fa-heart" th:unless="${session.fav}"></i><i th:if="${session.fav}" class="if-icon far fa-heart"></i></a>
 				</div>
 			</div>
 
