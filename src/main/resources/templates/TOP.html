@@ -19,6 +19,7 @@
 	crossorigin="anonymous">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/recipeList.css}" />
 <!-- スライダー用 -->
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -50,7 +51,6 @@
 					<ul class="hamburger-demo-menulist">
 						<li><a href="/signup">新規会員登録</a></li>
 						<li><a href="/favomenu">お気に入り</a></li>
-						<li><a href="#">詳細検索</a></li>
 						<li th:if="${session.userInfo==null}"><a href="/login">ログイン</a></li>
 						<li th:if="${session.userInfo!=null}"><a href="/logout">ログアウト</a></li>
 					</ul>
@@ -125,7 +125,7 @@
 					<img th:src="@{${'img/' + recipe.image}}" class="image5">
 					<p th:text="${recipe.dish}" class="title5"></p>
 					<p class="content5">お気に入り追加</p>
-					<a th:href="${recipe.dish}+'/favorite?prev=/search'"
+					<a th:href="${recipe.dish}+'/favorite?prev='"
 						class="favorite3">
 					<span
 						th:each="favorite:${session.favorite}"> <span

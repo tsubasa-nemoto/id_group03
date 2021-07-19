@@ -43,16 +43,24 @@ public class AccountController {
 		return "login";
 	}
 
+
+	//ログアウト
 	@RequestMapping("/logout")
 	public ModelAndView logout(ModelAndView mv,
 			@RequestParam(name = "prev", defaultValue = "/main") String prev) {
 		// userInfoのセッション情報はクリアする
 
 		session.removeAttribute("userInfo");
+		if((boolean) session.getAttribute("FMenu")) {
+			prev="/main";
+		session.removeAttribute("Fmenu");
+		}
 		mv.setViewName("redirect:" + prev);
 
 		return mv;
 	}
+
+
 
 	/**
 	 * ログインを実行
@@ -103,6 +111,8 @@ public class AccountController {
 
 					session.setAttribute("favorite",LFavorite);
 					}
+
+					session.setAttribute("FMenu",false);
 
 
 
@@ -228,8 +238,11 @@ public class AccountController {
 		//ランダム要素の追加の検討
 		//DBから要素の取り出しセットを行う
 		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
+		List<Favorite> favorite=favoriteRepository.findAll();
+		session.setAttribute("favorite", favorite);
 		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
+		session.setAttribute("FMenu",false);
 
 		mv.setViewName("top");
 		return mv;
