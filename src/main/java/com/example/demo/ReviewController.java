@@ -43,9 +43,9 @@ public class ReviewController {
 			 Users user=(Users)session.getAttribute("userInfo");
 			if(user!=null) {
 				String U = user.getName();
-			mv.addObject("mes","ユーザー名:"+U);
+				session.setAttribute("mes","ユーザー名:"+U);
 			}else {
-				mv.addObject("mes","入力するにはログインしてください");
+				session.setAttribute("mes","入力するにはログインしてください");
 			}
 			mv.addObject("recipe",R);
 			mv.addObject("reviewList",Rlist);

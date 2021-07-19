@@ -15,7 +15,7 @@ public class Favorite {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String dish;
-	private String name;
+	private String email;
 	private Boolean fav;
 
 	//コンストラクタ
@@ -23,65 +23,52 @@ public class Favorite {
 		super();
 	}
 
-
-	public Favorite(String dish, String name, Boolean fav) {
-		super();
-		this.dish = dish;
-		this.name = name;
-		this.fav = fav;
-	}
-
-
-	public Favorite(int id, String dish, String name, Boolean fav) {
-		super();
-		this.id = id;
-		this.dish = dish;
-		this.name = name;
-		this.fav = fav;
-	}
-
-	//ゲッターセッター
-
 	public int getId() {
 		return id;
 	}
-
 
 	public String getDish() {
 		return dish;
 	}
 
-
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
-
 
 	public Boolean getFav() {
 		return fav;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public void setDish(String dish) {
 		this.dish = dish;
 	}
 
-
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
 
 	public void setFav(Boolean fav) {
 		this.fav = fav;
 	}
 
+	public Favorite(int id, String dish, String email, Boolean fav) {
+		super();
+		this.id = id;
+		this.dish = dish;
+		this.email = email;
+		this.fav = fav;
+	}
 
+	public Favorite(String dish, String email, Boolean fav) {
+		super();
+		this.dish = dish;
+		this.email = email;
+		this.fav = fav;
+	}
 
 
 

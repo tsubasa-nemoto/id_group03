@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,8 @@ public class AccountController {
 	UsersRepository usersRepository;
 	@Autowired
 	RecipeRepository recipeRepository;
+	@Autowired
+	FavoriteRepository favoriteRepository;
 
 	/**
 	 * ログイン画面を表示
@@ -29,17 +32,14 @@ public class AccountController {
 	@RequestMapping("/login")
 	public String login(@RequestParam(name = "prev", defaultValue = "/main") String prev) {
 		// ひとつ前に戻るための準備
-		System.out.println(session.getAttribute("prev"));//チェック
 		String pre = (String) session.getAttribute("prev");
 		session.invalidate();
-		System.out.println(prev);
-		System.out.println(pre);
 		if (pre == null) {
 			session.setAttribute("prev", prev);
 		} else {
 			session.setAttribute("prev", pre);
 		}
-		System.out.println(session.getAttribute("prev"));
+
 		return "login";
 	}
 
@@ -89,7 +89,24 @@ public class AccountController {
 					session.setAttribute("Frag", false);
 					String prev = (String) session.getAttribute("prev");
 					session.removeAttribute("prev");
-					System.out.println(prev);
+
+					List<Recipe> recipes=recipeRepository.findAll();
+					for( Recipe recipe:recipes) {
+					List<Favorite> LFavorite = favoriteRepository.findByDishAndEmailLike(recipe.getDish(), user.getEmail());
+
+					if (LFavorite.isEmpty() == true || LFavorite.size() == 0) {
+						Favorite FAV = new Favorite(recipe.getDish(), user.getEmail(), false);
+						favoriteRepository.saveAndFlush(FAV);
+					}
+					LFavorite = favoriteRepository.findByDishAndEmailLike(recipe.getDish(), user.getEmail());
+					System.out.println(LFavorite);
+
+					session.setAttribute("favorite",LFavorite);
+					}
+
+
+
+
 					mv.setViewName("redirect:" + prev);
 
 					return mv;

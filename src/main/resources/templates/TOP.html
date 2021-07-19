@@ -10,8 +10,13 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada"
 	rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+	integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+	crossorigin="anonymous">
 <link href='https://css.gg/search.css' rel='stylesheet'>
 <link rel="stylesheet" media="all" th:href="@{/css/style2.css}" />
 <!-- スライダー用 -->
@@ -66,41 +71,41 @@
 			<h1>
 				HOSHYDAYS<br>Kitchen.
 			</h1>
-			<a class="scroll" href="#pic">
-			Scroll
-			</a>
+			<a class="scroll" href="#pic"> Scroll </a>
 
 
 		</div>
 
-		<div class="main2">main2
+		<div class="main2">
+			main2
 			<h2 id="pic">PICKUP MENU</h2>
 
 			<!-- Swiper -->
 			<div class="swiper-parent">
 
-			<!-- Swiper START -->
-			<div class="swiper-container mySwiper">
+				<!-- Swiper START -->
+				<div class="swiper-container mySwiper">
 
-				<!-- メイン表示部分 -->
-				<div class="swiper-wrapper">
+					<!-- メイン表示部分 -->
+					<div class="swiper-wrapper">
 
-					<!-- 各スライド -->
-					<div class="swiper-slide" th:each="recipe:${session.Recipe}">
-						<a th:href ="@{'/'+${recipe.dish}+'/details'}">	<img th:src="@{${'img/' + recipe.image}}" /></a>
+						<!-- 各スライド -->
+						<div class="swiper-slide" th:each="recipe:${session.Recipe}">
+							<a th:href="@{'/'+${recipe.dish}+'/details'}"> <img
+								th:src="@{${'img/' + recipe.image}}" /></a>
+						</div>
 					</div>
+					<!-- ページネーション -->
+					<div class="swiper-pagination swiper-pagination-black"></div>
 				</div>
-				<!-- ページネーション -->
-				<div class="swiper-pagination swiper-pagination-black"></div>
-			</div>
-			<!-- Swiper END -->
+				<!-- Swiper END -->
 
 				<!-- 前ページ -->
 				<div class="swiper-button-prev"></div>
 				<!-- 次ページ -->
 				<div class="swiper-button-next"></div>
 
-		</div>
+			</div>
 
 
 			<!-- Swiper JS -->
@@ -110,7 +115,8 @@
 			<script type="text/javascript" th:src="@{/js/slide.js}"></script>
 		</div>
 
-		<div class="main3">main3
+		<div class="main3">
+			main3
 			<h2 id="pic2">RECIPE MENU</h2>
 			<div class="card-group2">
 
@@ -119,12 +125,25 @@
 					<img th:src="@{${'img/' + recipe.image}}" class="image5">
 					<p th:text="${recipe.dish}" class="title5"></p>
 					<p class="content5">お気に入り追加</p>
-					<a th:href="${recipe.dish}+'/favorite?prev=search'" class="favorite3" onClick="favorite()"><i class="f-icon far fa-heart"></i></a>
+					<a th:href="${recipe.dish}+'/favorite?prev=/search'"
+						class="favorite3">
+					<span
+						th:each="favorite:${session.favorite}"> <span
+							th:if="${session.userInfo!=null}"> <span
+								th:if="${favorite.dish==recipe.dish}"> <i
+									class="if-icon far fa-heart" th:if="${favorite.fav==true}"></i>
+									<i th:unless="${favorite.fav==true}"
+									class="f-icon far fa-heart"></i>
+							</span>
+						</span> <span th:if="${session.userInfo==null}"> <i
+								class="f-icon far fa-heart"></i>
+						</span>
+					</span></a>
 
 					<div class="box5">
 						<button class="continue5"
 							th:attr="onClick='location.href=\''+${recipe.dish}+'/details\''">
-	<!--
+							<!--
 							クリックした場合リンクに飛ぶ
 							onClickでクリックの監視、location.hrefでリンク機能
 							\''+${recipe.dish}+'\''
@@ -144,16 +163,12 @@
 			</div>
 		</div>
 
-		<footer>footer
-			<h6 class="footer2">
-				HOSHYDAYS Kitchen.
-			</h6>
+		<footer>
+			footer
+			<h6 class="footer2">HOSHYDAYS Kitchen.</h6>
 
-			<a class="footer3" href="/main">トップ
-			</a>
-
-			<a class="footer4" href="/search">レシピリスト一覧
-			</a>
+			<a class="footer3" href="/main">トップ </a> <a class="footer4"
+				href="/search">レシピリスト一覧 </a>
 		</footer>
 
 	</div>

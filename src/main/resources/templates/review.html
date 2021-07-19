@@ -34,7 +34,7 @@
 		<br>
 		<br>
 
-			<span class="user" th:text="${mes}"></span>
+			<span class="user" th:text="${session.mes}"></span>
 			<div class="user" th:if="${session.userInfo !=null}"><!-- レビュー入力 -->
 			<br>
 				<form th:action="@{'/'+${recipe.dish}+'/review'}" method="post" class="review">

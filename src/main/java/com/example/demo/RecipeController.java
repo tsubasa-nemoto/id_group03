@@ -58,7 +58,7 @@ public class RecipeController {
 		List<Favorite> list;
 		Users user = (Users) session.getAttribute("userInfo");
 		if(user!=null) {
-			list = favoriteRepository.findByName(user.getName());
+			list = favoriteRepository.findByEmail(user.getEmail());
 		}
 		else {
 		list=favoriteRepository.findAll();
@@ -137,14 +137,14 @@ public class RecipeController {
 
 		else {
 			//新規登録（お気に入り）
-			List<Favorite> LFavorite = favoriteRepository.findByDishAndNameLike(dish, user.getName());
+			List<Favorite> LFavorite = favoriteRepository.findByDishAndEmailLike(dish, user.getEmail());
 
 			if (LFavorite.isEmpty() == true || LFavorite.size() == 0) {
-				Favorite FAV = new Favorite(dish, user.getName(), false);
+				Favorite FAV = new Favorite(dish, user.getEmail(), false);
 				favoriteRepository.saveAndFlush(FAV);
 			}
 			//お気に入りの情報取得
-			Optional<Favorite> Fdish = favoriteRepository.findByDishAndName(dish, user.getName());
+			Optional<Favorite> Fdish = favoriteRepository.findByDishAndEmail(dish, user.getEmail());
 
 			//更新のためのデータ
 			Favorite F = Fdish.get();
@@ -156,7 +156,7 @@ public class RecipeController {
 			}
 
 			//お気に入り情報の更新
-			Favorite FAV = new Favorite(id, dish, user.getName(), fav);
+			Favorite FAV = new Favorite(id, dish, user.getEmail(), fav);
 			favoriteRepository.saveAndFlush(FAV);
 		}
 		//表示用処理
@@ -173,7 +173,7 @@ public class RecipeController {
 		} else {
 			frg = false;
 		}
-		Optional<Favorite> Fdish = favoriteRepository.findByDishAndName(dish, user.getName());
+		Optional<Favorite> Fdish = favoriteRepository.findByDishAndEmail(dish, user.getEmail());
 		Favorite favo =Fdish.get();
 		session.setAttribute("fav",favo.getFav() );
 		session.setAttribute("Frag", frg);
@@ -204,8 +204,7 @@ public class RecipeController {
 		} else {
 			//DBの中のお気に入りされているものを呼び出す
 
-			String userName = user.getName();
-			List<Favorite> list = favoriteRepository.findByNameAndFav(userName, true);
+			List<Favorite> list = favoriteRepository.findByEmailAndFav( user.getEmail(), true);
 			int num = 0;
 			for (Favorite L : list) {//お気に入りレシピを呼び出す（テーブルが別のため）
 				List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
