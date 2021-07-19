@@ -32,5 +32,146 @@
 お気に入りページ：ユーザーのお気に入りしたものを表示
 （ログイン後のトップページでもいいかも）
 
+
+
+DB名　id_droup03
+
+CREATE TABLE users
+(
+code SERIAL PRIMARY KEY,
+name TEXT,
+email TEXT,
+password TEXT
+);
+
+INSERT INTO users(name, email, password) VALUES('田中太郎', 'tanaka@aaa.com', 'himitu');
+INSERT INTO users(name, email, password) VALUES('鈴木一郎', 'suzuki1@aaa.com', 'himitu');
+INSERT INTO users(name, email, password) VALUES('鈴木次郎', 'suzuki2@aaa.com', 'himitu');
+
+create table review(
+id SERIAL PRIMARY KEY,
+code Integer REFERENCES food (code),
+name TEXT,
+review TEXT);
+
+
+CREATE TABLE food
+(
+code SERIAL PRIMARY KEY,
+dish TEXT,
+image TEXT,
+recipe TEXT
+);
+
+insert into
+food(dish,image,recipe)values('Pancake','pancake2.jpg',
+'1. ボウルに粉類の材料、砂糖、塩を入れ泡だて器で混ぜ合わせます。<br>
+2. 卵、牛乳を加え粉っぽさがなくなるまで混ぜ合わせます。<br>
+3. フライパンを強火で熱し温まったら火から下ろし濡れた布巾にのせて温度を均一にします。<br>
+4. 弱火にし、2の1/4量を入れ3分ほど加熱します。<br>
+5. 焼き色が付き、表面がぷつぷつしてきたら裏返し弱火で2分ほど加熱します。中まで火が通り、焼き色が付いたら火から下ろします。同様に3枚焼きます。<br>
+6. 皿に盛り付けてミントを添え有塩バターをのせ、メープルシロップをかけてできあがりです。'
+);
+
+insert into
+food(dish,image,recipe)values('Lemonade','lemonsoda.jpg',
+'1. レモンの皮をむき、2〜3mmの薄切りにします。<br>
+2. 耐熱ボウルにレモンシロップの材料をいれ、ラップをして600Wのレンジで2分加熱します。<br>
+3. 全体をかき混ぜ、粗熱をとります。<br>
+4. 3を大さじ2ほどグラスにいれ、氷と水を加えたら完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Shakshuka','shakshuka.jpg',
+'1. タマネギ、ピーマン、トマトは粗みじん切り、ニンニクはみじん切りにする。<br>
+2. フライパンにオリーブオイルを温め、タマネギ、ニンニクを中火で炒める。タマネギに透明感が出てきたら、ピーマン、トマト、カットトマト缶、水を加えて弱火で煮る。<br>
+3. 水分が少なくなりモッタリするまで煮たら、2にAを加えて味を調える。<br>
+※お好みでカイエンペッパーの量を調整してください。<br>
+4. 3に卵を割り入れてふたをし、白身が少し固まるまで加熱する。<br>
+5. パセリを散らし、ピタパンを添える。'
+);
+
+insert into
+food(dish,image,recipe)values('French Toast','french-toast.jpg',
+'1. 食パンを半分に切ります。<br>
+2. ボウルに卵液の材料を入れよく混ぜ、1を漬けます。<br>
+3. フランパンを熱し、有塩バターを入れ溶かし2を焼きます。<br>
+4. 焼き目がついたら裏返し、蓋をして弱火で2分ほど焼きます。<br>
+5. 焼き上がったら、火から下ろしてお皿に盛り付け、粉糖、はちみつをかけて完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Bonngore Pasta','seafood-spaghetti.jpg',
+'1. 砂抜きしアサリを流水でこすり洗いします。<br>
+2. ニンニクはみじん切りにします。<br>
+3. フライパンにオリーブオイル大さじ1、2、赤唐辛子を入れて弱火にかけます。<br>
+4. ニンニクの良い香りがしてきたら、中火にしてアサリを入れます。 サッと炒めたら、白ワインを加えて蓋をし、弱火にします。<br>
+5. アサリの口が開いたら火を止めます。<br>
+6. スパゲティを袋の表示通りに茹で、ザルに上げます。この時、茹で汁を50ml程とっておきます。<br>
+7. 5に茹で汁、6を加えてよく混ぜ合わせます。 仕上げに残りのオリーブオイルを回しかけ、よく混ぜます。<br>
+8. 器に7を盛り付け、ドライパセリをかけて完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Hamburger','chicken-burger.jpg',
+'1. トマトは1cm幅に切ります。<br>
+2. ピクルスは縦に6枚の薄切りにします。<br>
+3. パン粉に牛乳を入れ、ひたします。<br>
+4. パテを作ります。ボウルに牛豚合びき肉と塩こしょうを入れて捏ね、粘り気が出てきたら残りのパテの材料を入れて捏ねます。<br>
+5. 2等分にし、バンズの大きさに合わせて円形に成形し、薄力粉をまぶします。<br>
+6. 中火で熱したフライパンにサラダ油をひき、5を焼きます。両面に焼き色が付いたらチェダーチーズをのせて蓋をし、弱火で5分程蒸し焼きにします。<br>
+7. 中まで火が通り、チェダーチーズが溶けたら火から下ろします。<br>
+8. バンズはオーブントースターで3分程、焼き色がつくまで焼きます。<br>
+9. 8の下の部分にマスタードを塗り、上の部分にケチャップを塗ります。2、フリルレタス、7、1、紫玉ねぎの順にのせます。上の部分を重ね、お皿に盛りつけて完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Pumpkin Soup','pumpkin-soup.jpg',
+'1. かぼちゃは種とワタを取り除き皮をむきます。2cm角に切り、耐熱ボウルに入れてふんわりラップをし、500Wの電子レンジで8分柔らかくなるまで加熱します。<br>
+2. 熱いうちにフォークで潰し、ミキサーに入れます。<br>
+3. 牛乳を2回に分けて加えながら、なめらかになるまで都度撹拌します。<br>
+4. 鍋に3を入れて中火に熱し、(A)を加えて味を調えます。<br>
+5. ひと煮立ちしたら有塩バターを加え、よく混ぜ合わせ、火から下ろします。<br>
+6. 器に注ぎ、トッピングをのせて完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Blueberry Toast','bread.jpg',
+'1. 材料を全て鍋に入れ、中火にかけます。<br>
+2. 沸騰したら弱火にし、焦げないようにかき混ぜながら8分〜10分煮詰めます。<br>
+3. 水分が飛び、とろみがついたら火からおろします。<br>
+4. トーストしたパンの上にのせて完成です。'
+);
+
+insert into
+food(dish,image,recipe)values('Cafe Latte','coffee-latte.jpg',
+'1. エスプレッソを入れる。<br>
+2. スチーマーでミルクを泡立てる。<br>
+3. ミルクをエスプレッソに流し込む。'
+);
+
+insert into
+food(dish,image,recipe)values('Mazesoba','mazesoba.jpg',
+'1. 耐熱ボウルにかつお節を入れ、600Wの電子レンジで2分程加熱し、手で粉末状に細かくします。<br>
+2. 中火で熱したフライパンに豚ひき肉を入れて炒め、色が変わってきたら(A)を入れ、肉に火が通り、味が馴染んだら火から下ろします。<br>
+3. 器に(B)、中華麺を入れ、混ぜ合わせます。<br>
+4. トッピングををのせて完成です。'
+);
+
+create table review(
+id SERIAL PRIMARY KEY,
+code Integer REFERENCES food (code),
+name TEXT,
+review TEXT);
+
+create table favorite(
+id SERIAL PRIMARY KEY,
+email TEXT,
+dish TEXT ,
+fav Boolean);
+
+
+
+
 </body>
 </html>
