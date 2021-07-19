@@ -33,12 +33,13 @@ public class RecipeController {
 	public ModelAndView searchitems(
 			@RequestParam(name = "search", defaultValue = "") String dish,
 			ModelAndView mv) {
-		//sessionが途切れた場合の処理
-
 		//aがtrueなら遷移前ページの検索情報を取得
 		boolean a = (boolean) session.getAttribute("Frag");
 
 		boolean b = false;
+
+
+
 
 		if (a) {
 			if (dish.equals(null) || dish.length() == 0) {
@@ -52,6 +53,18 @@ public class RecipeController {
 			session.setAttribute("Frag", a);
 			b = true;
 		}
+
+
+		List<Favorite> list;
+		Users user = (Users) session.getAttribute("userInfo");
+		if(user!=null) {
+			list = favoriteRepository.findByName(user.getName());
+		}
+		else {
+		list=favoriteRepository.findAll();
+		}
+		session.setAttribute("favorite", list);
+		System.out.println(list+"55");
 
 		List<Recipe> recipeList = null;//nullを入れて中身を空っぽに
 		recipeList = recipeRepository.findAll();
@@ -87,7 +100,6 @@ public class RecipeController {
 		Optional<Recipe> recipe = recipeRepository.findByDish(dish);
 		Recipe R = recipe.get();
 		List<Review> review = reviewRepository.findByCode(R.getCode());
-
 		mv.addObject("reviewList", review);
 		mv.addObject("recipe", R);
 
@@ -148,9 +160,10 @@ public class RecipeController {
 			favoriteRepository.saveAndFlush(FAV);
 		}
 		//表示用処理
-		session.setAttribute("fav", fav);
-		List<Favorite> list = favoriteRepository.findByFav(true);
-		session.setAttribute("favorite", list);
+
+
+
+
 		//お気に入り登録しているリストの用意
 
 		//検索の実行の確認
@@ -160,13 +173,15 @@ public class RecipeController {
 		} else {
 			frg = false;
 		}
-
+		Optional<Favorite> Fdish = favoriteRepository.findByDishAndName(dish, user.getName());
+		Favorite favo =Fdish.get();
+		session.setAttribute("fav",favo.getFav() );
 		session.setAttribute("Frag", frg);
 		mv.setViewName("redirect:" + Return);
 		return mv;
 	}
 
-	@RequestMapping("/favomenu")
+	@RequestMapping("/favomenu")//お気に入りページ
 	public ModelAndView favomenu(@RequestParam(name = "prev", defaultValue = "/main") String prev,
 			ModelAndView mv) {
 		Users user = (Users) session.getAttribute("userInfo");
@@ -187,25 +202,23 @@ public class RecipeController {
 			mv.addObject("message", "お気に入り機能を利用するにはログインしてください");
 			mv.setViewName("login");
 		} else {
+			//DBの中のお気に入りされているものを呼び出す
+
 			String userName = user.getName();
 			List<Favorite> list = favoriteRepository.findByNameAndFav(userName, true);
-			System.out.println(list + "LIST");
 			int num = 0;
-			for (Favorite L : list) {
-
+			for (Favorite L : list) {//お気に入りレシピを呼び出す（テーブルが別のため）
 				List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
-				System.out.println(LL + "LL");
 
 				List<Recipe> RList = new ArrayList<Recipe>();
 
-				if (num != 0) {
+				if (num != 0) {//一回目かの判定
 					RList = (List<Recipe>) session.getAttribute("LL");
 					RList.addAll(LL);
 					session.setAttribute("LL", RList);
 				} else {
 					session.setAttribute("LL", LL);
 				}
-				System.out.println(session.getAttribute("LL"));
 
 				num++;
 			}

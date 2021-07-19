@@ -33,44 +33,56 @@
 		</h1>
 
 		<div class="main5">
-		<div class="card-group">
+			<div class="card-group">
 
-			<div th:each="recipe:${recipes}" class="card4">
+				<div class="card4" th:each="recipe:${recipes}">
 
-				<img th:src="@{${'img/' + recipe.image}}" class="image4">
-				<p th:text="${recipe.dish}" class="title4"></p>
-				<p class="content4">お気に入り追加</p>
-				<a th:href="${recipe.dish}+'/favorite?prev=/search'"
-					class="favorite2"><i class="f-icon far fa-heart"
-					th:if="${session.fav}"></i><i th:unless="${session.fav}"
-					class="if-icon far fa-heart"></i> </a>
+					<img th:src="@{${'img/' + recipe.image}}" class="image4">
+					<p th:text="${recipe.dish}" class="title4"></p>
+					<p class="content4">お気に入り追加</p>
+					<a th:href="${recipe.dish}+'/favorite?prev=/search'"
+						class="favorite2">
+						<span th:each="favorite:${session.favorite}">
+							<span th:if="${session.userInfo!=null}">
+								<span th:if="${favorite.dish==recipe.dish}">
+								<i class="if-icon far fa-heart" th:if="${favorite.fav==true}"></i>
+								<i th:unless="${favorite.fav==true}"class="f-icon far fa-heart"></i>
+								</span>
+							</span>
+							<span th:if="${session.userInfo==null}">
+								<i class="f-icon far fa-heart"></i>
+							</span>
+						</span>
+					</a>
 
-				<div class="box4">
-					<button class="continue4"
-						th:attr="onClick='location.href=\''+${recipe.dish}+'/details\''">
-						<!--
+
+					<div class="box4">
+						<button class="continue4"
+							th:attr="onClick='location.href=\''+${recipe.dish}+'/details\''">
+							<!--
 						クリックした場合リンクに飛ぶ
 						onClickでクリックの監視、location.hrefでリンク機能
 						\''+${recipe.dish}+'\''
 						エスケープ処理の\'''+${}+'\''
 						  -->
 
-						<!--
+							<!--
 						任意の属性を使用したい場合はth:attrを使い
 						th:attr="onclick"としてやることで、
 						thymeleafの機能を使ってonclickを動的に設定することができる
 						-->
 
-						レシピ詳細へ
-					</button>
+							レシピ詳細へ
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 	</div>
 
-		<footer>
-			<span th:replace="menu2"></span>
-		</footer>
+	<footer>
+		<span th:replace="menu2"></span>
+	</footer>
 </body>
 </html>

@@ -213,6 +213,7 @@ public class AccountController {
 		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
 		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
+
 		mv.setViewName("top");
 		return mv;
 	}
