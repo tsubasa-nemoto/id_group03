@@ -27,7 +27,7 @@
 
 .under {
 	width:650px;
-	height:700px;
+	height:600px;
 }
 
 #detail_image {
@@ -108,7 +108,7 @@ h1{
 a.back2 {
   position: relative;
   top:-31em;
-  left:-500px;
+  left:-470px;
   color: #000000;
   font-weight: bold;
   background: #efefef;
@@ -204,7 +204,7 @@ table td{
 
   position:relative;
   top:-490px;
-  left:175px;
+  left:155px;
 
 }
 
