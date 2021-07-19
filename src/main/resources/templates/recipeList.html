@@ -36,23 +36,24 @@
 			<div class="card-group">
 
 				<div class="card4" th:each="recipe:${recipes}">
-
-					<img th:src="@{${'img/' + recipe.image}}" class="image4">
-					<p th:text="${recipe.dish}" class="title4"></p>
+					<a th:href="${recipe.dish}+'/details'"> <img
+						th:src="@{${'img/' + recipe.image}}" class="image4"></a>
+					<a th:href="${recipe.dish}+'/details'">
+					<p th:text="${recipe.dish}" class="title4"></p></a>
 					<p class="content4">お気に入り追加</p>
 					<a th:href="${recipe.dish}+'/favorite?prev=/search'"
-						class="favorite2">
-						<span th:each="favorite:${session.favorite}">
-							<span th:if="${session.userInfo!=null}">
-								<span th:if="${favorite.dish==recipe.dish}">
-								<i class="if-icon far fa-heart" th:if="${favorite.fav==true}"></i>
-								<i th:unless="${favorite.fav==true}"class="f-icon far fa-heart"></i>
-								</span>
+						class="favorite2"> <span
+						th:each="favorite:${session.favorite}"> <span
+							th:if="${session.userInfo!=null}"> <span
+								th:if="${favorite.dish==recipe.dish}"> <i
+									class="if-icon far fa-heart" th:if="${favorite.fav==true}"></i>
+									<i th:unless="${favorite.fav==true}"
+									class="f-icon far fa-heart"></i>
 							</span>
-							<span th:if="${session.userInfo==null}">
-								<i class="f-icon far fa-heart"></i>
-							</span>
+						</span> <span th:if="${session.userInfo==null}"> <i
+								class="f-icon far fa-heart"></i>
 						</span>
+					</span>
 					</a>
 
 

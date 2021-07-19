@@ -243,7 +243,7 @@ public class AccountController {
 		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
 		session.setAttribute("FMenu",false);
-
+		session.setAttribute("B", false);
 		mv.setViewName("top");
 		return mv;
 	}

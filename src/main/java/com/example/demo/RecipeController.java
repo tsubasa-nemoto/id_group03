@@ -26,6 +26,8 @@ public class RecipeController {
 	@Autowired
 	HttpSession session;
 
+
+	boolean count=false;
 	/**
 	 * レシピ検索の料理を表示
 	 */
@@ -34,17 +36,15 @@ public class RecipeController {
 			@RequestParam(name = "search", defaultValue = "") String dish,
 			ModelAndView mv) {
 		//aがtrueなら遷移前ページの検索情報を取得
+
+
 		boolean a = (boolean) session.getAttribute("Frag");
 
 		boolean b = false;
-
 		if (a) {
 			if (dish.equals(null) || dish.length() == 0) {
 				dish = (String) session.getAttribute("searchResult");
-			} else {
-				session.removeAttribute("searchResult");
 			}
-
 			a = false;
 			session.removeAttribute("searchResult");
 			session.setAttribute("Frag", a);
@@ -68,7 +68,8 @@ public class RecipeController {
 			recipeList = recipeRepository.findAll();//全件検索
 			mv.addObject("mes", "レシピ一覧");
 			session.setAttribute("mes", "レシピ一覧");
-		}
+			System.out.println(fMenu+"75");
+			}
 
 		else if (!dish.equals("")) {//nameが空白でないとき
 			recipeList = recipeRepository.findByDishLike("%" + dish + "%");//あいまい検索で表示
@@ -76,13 +77,15 @@ public class RecipeController {
 
 			if (b == false) {//検索が一回目なら
 				session.setAttribute("searchResult", dish);
+				fMenu=false;
+				System.out.println(fMenu+"84");
 			}
 		}
 		mv.addObject("recipes", recipeList);
-
+System.out.println(fMenu);
 
 		//お気に入りページでお気に入り解除した場合の処理
-		if (fMenu) {
+		if (fMenu==true) {
 			List<Favorite> Favolist = favoriteRepository.findByEmailAndFav(user.getEmail(), true);
 			int num = 0;
 			List<Recipe> RList = new ArrayList<Recipe>();
@@ -101,12 +104,12 @@ public class RecipeController {
 			RList=(List<Recipe>) session.getAttribute("LL");
 			mv.addObject("mes", "お気に入り");
 			mv.addObject("recipes",RList );
+			fMenu=false;
 		}
-
-		//itemListをitems(list.htmlのth:eachのところ)に格納
-		//mv.addObject("search", dish);//テキストボックスに保持(menu.htmlのth:valueで格納するキーをつくる)
+		System.out.println(fMenu);
+		session.setAttribute("FMenu", fMenu);
 		session.setAttribute("recipes", recipeList);
-		mv.setViewName("/recipeList");//list.htmlで表示
+		mv.setViewName("/recipeList");//recipeList.htmlで表示
 
 		return mv;
 	}
@@ -133,11 +136,10 @@ public class RecipeController {
 			ModelAndView mv) {
 
 		Users user = (Users) session.getAttribute("userInfo");
-		System.out.println(prev + "116");
+
 		int result = prev.indexOf("0/") + 1;
 		String Return = prev.substring(result);//前のページの8080/以降のデータ取得
 		boolean fav;
-		System.out.println(Return + "120");
 		if (user == null) {//ログインの確認
 			session.setAttribute("prev", Return); //searchのためのリターンの値
 
@@ -194,11 +196,13 @@ public class RecipeController {
 		Favorite favo = Fdish.get();
 		session.setAttribute("fav", favo.getFav());
 		session.setAttribute("Frag", frg);
-		System.out.println(Return + "180");
 		mv.setViewName("redirect:" + Return);
+		count=true;
 		return mv;
 	}
 
+
+	//お気に入りの条件検索
 	@RequestMapping("/favomenu") //お気に入りページ
 	public ModelAndView favomenu(@RequestParam(name = "prev", defaultValue = "/main") String prev,
 			ModelAndView mv) {
