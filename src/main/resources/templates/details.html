@@ -42,7 +42,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 </script>
 		<div class="container1">
 
-			<div class="main">left
+			<div class="main">
 				<a> <img th:src="@{${'/img/' + recipe.image}}" id="detail_image">
 				</a>
 				<a class="back2" href="/search">BACK</a>
@@ -58,7 +58,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 
 		<div class="container2">
 
-			<div class="side">right
+			<div class="side">
 				<h1 th:text="${recipe.dish}" class="H"></h1>
 				<br>
 				<h3 class="lv">Level</h3>
@@ -71,7 +71,7 @@ location.href="favorite?prev=''"+ encodeURIComponent(location.href);
 
 			</div>
 
-			<div class="under">under
+			<div class="under">
 
 				<h4 class="recipedayo">RECIPE</h4>
 
