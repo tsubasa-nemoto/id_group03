@@ -50,7 +50,7 @@
 				<div class="hamburger-demo-menuwrap">
 					<ul class="hamburger-demo-menulist">
 						<li><a href="/signup">新規会員登録</a></li>
-						<li><a href="/favomenu">お気に入り</a></li>
+						<li th:if="${session.userInfo==null}"><li><a href="/favomenu">お気に入り</a></li>
 						<li th:if="${session.userInfo==null}"><a href="/login">ログイン</a></li>
 						<li th:if="${session.userInfo!=null}"><a href="/logout">ログアウト</a></li>
 					</ul>
