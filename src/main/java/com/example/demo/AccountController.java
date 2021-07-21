@@ -39,7 +39,7 @@ public class AccountController {
 		} else {
 			session.setAttribute("prev", pre);
 		}
-
+		System.out.println(session.getAttribute("prev")+"42");
 		return "login";
 	}
 
@@ -97,6 +97,12 @@ public class AccountController {
 					session.setAttribute("Frag", false);
 					String prev = (String) session.getAttribute("prev");
 					session.removeAttribute("prev");
+					System.out.println(prev+"100");
+
+					if(prev==null||prev.length()==0)
+					{
+						prev="/main";
+					}
 
 					List<Recipe> recipes=recipeRepository.findAll();
 					for( Recipe recipe:recipes) {
@@ -107,12 +113,13 @@ public class AccountController {
 						favoriteRepository.saveAndFlush(FAV);
 					}
 					LFavorite = favoriteRepository.findByDishAndEmailLike(recipe.getDish(), user.getEmail());
-					System.out.println(LFavorite);
 
 					session.setAttribute("favorite",LFavorite);
 					}
 
 					session.setAttribute("FMenu",false);
+
+					session.setAttribute("mesCheck","");
 
 
 
@@ -243,7 +250,7 @@ public class AccountController {
 		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
 		session.setAttribute("FMenu",false);
-		session.setAttribute("B", false);
+		session.setAttribute("page", false);
 		mv.setViewName("top");
 		return mv;
 	}

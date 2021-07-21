@@ -27,7 +27,7 @@ public class RecipeController {
 	HttpSession session;
 
 
-	boolean count=false;
+
 	/**
 	 * レシピ検索の料理を表示
 	 */
@@ -39,8 +39,10 @@ public class RecipeController {
 
 
 		boolean a = (boolean) session.getAttribute("Frag");
-
+		boolean fMenu = (boolean) session.getAttribute("FMenu");
 		boolean b = false;
+
+		session.setAttribute("page",false);
 		if (a) {
 			if (dish.equals(null) || dish.length() == 0) {
 				dish = (String) session.getAttribute("searchResult");
@@ -50,11 +52,11 @@ public class RecipeController {
 			session.setAttribute("Frag", a);
 			b = true;
 		}
-
 		List<Favorite> list;
 		Users user = (Users) session.getAttribute("userInfo");
 		if (user != null) {
 			list = favoriteRepository.findByEmail(user.getEmail());
+
 		} else {
 			list = favoriteRepository.findAll();
 		}
@@ -62,7 +64,7 @@ public class RecipeController {
 
 		List<Recipe> recipeList = null;//nullを入れて中身を空っぽに
 		recipeList = recipeRepository.findAll();
-		boolean fMenu = (boolean) session.getAttribute("FMenu");
+
 
 		if (dish == null || dish.length() == 0) {//すべて空白だったら
 			recipeList = recipeRepository.findAll();//全件検索
@@ -82,33 +84,33 @@ public class RecipeController {
 			}
 		}
 		mv.addObject("recipes", recipeList);
-System.out.println(fMenu);
+
 
 		//お気に入りページでお気に入り解除した場合の処理
-		if (fMenu==true) {
-			List<Favorite> Favolist = favoriteRepository.findByEmailAndFav(user.getEmail(), true);
-			int num = 0;
-			List<Recipe> RList = new ArrayList<Recipe>();
-			for (Favorite L : Favolist) {//お気に入りレシピを呼び出す（テーブルが別のため）
-				List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
-				if (num != 0) {//一回目かの判定
-					RList = (List<Recipe>) session.getAttribute("LL");
-					RList.addAll(LL);
-					session.setAttribute("LL", RList);
-				} else {
-					session.setAttribute("LL", LL);
-				}
 
-				num++;
-			}
-			RList=(List<Recipe>) session.getAttribute("LL");
-			mv.addObject("mes", "お気に入り");
-			mv.addObject("recipes",RList );
-			fMenu=false;
-		}
-		System.out.println(fMenu);
+//boolean page=(boolean)session.getAttribute("page");
+//		if (page==true) {
+//			List<Favorite> Favolist = favoriteRepository.findByEmailAndFav(user.getEmail(), true);
+//			int num = 0;
+//			List<Recipe> RList = new ArrayList<Recipe>();
+//			for (Favorite L : Favolist) {//お気に入りレシピを呼び出す（テーブルが別のため）
+//				List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
+//				if (num != 0) {//一回目かの判定
+//					RList = (List<Recipe>) session.getAttribute("LL");
+//					RList.addAll(LL);
+//					session.setAttribute("LL", RList);
+//				} else {
+//					session.setAttribute("LL", LL);
+//				}
+//
+//				num++;
+//			}
+//			RList=(List<Recipe>) session.getAttribute("LL");
+//			mv.addObject("mes", "お気に入り");
+//			mv.addObject("recipes",RList );
+//
+//		}
 		session.setAttribute("FMenu", fMenu);
-		session.setAttribute("recipes", recipeList);
 		mv.setViewName("/recipeList");//recipeList.htmlで表示
 
 		return mv;
@@ -130,6 +132,8 @@ System.out.println(fMenu);
 		return mv;
 	}
 
+
+
 	@RequestMapping("{dish}/favorite") //お気に入り用メソッド
 	public ModelAndView fav(@PathVariable(name = "dish") String dish,
 			@RequestParam(name = "prev", defaultValue = "/main") String prev,
@@ -137,7 +141,7 @@ System.out.println(fMenu);
 
 		Users user = (Users) session.getAttribute("userInfo");
 
-		int result = prev.indexOf("0/") + 1;
+		int result = prev.indexOf("0/")+1 ;
 		String Return = prev.substring(result);//前のページの8080/以降のデータ取得
 		boolean fav;
 		if (user == null) {//ログインの確認
@@ -158,13 +162,6 @@ System.out.println(fMenu);
 		}
 
 		else {
-			//新規登録（お気に入り）
-			List<Favorite> LFavorite = favoriteRepository.findByDishAndEmailLike(dish, user.getEmail());
-
-			if (LFavorite.isEmpty() == true || LFavorite.size() == 0) {
-				Favorite FAV = new Favorite(dish, user.getEmail(), false);
-				favoriteRepository.saveAndFlush(FAV);
-			}
 			//お気に入りの情報取得
 			Optional<Favorite> Fdish = favoriteRepository.findByDishAndEmail(dish, user.getEmail());
 
@@ -197,7 +194,52 @@ System.out.println(fMenu);
 		session.setAttribute("fav", favo.getFav());
 		session.setAttribute("Frag", frg);
 		mv.setViewName("redirect:" + Return);
-		count=true;
+
+		boolean page=(boolean)session.getAttribute("page");
+
+
+		if(page) {
+	List<Favorite> list = favoriteRepository.findByEmailAndFav(user.getEmail(), true);
+	int num = 0;
+	for (Favorite L : list) {//お気に入りレシピを呼び出す（テーブルが別のため）
+		List<Recipe> LL = recipeRepository.findByDishLike(L.getDish());
+
+		List<Recipe> RList = new ArrayList<Recipe>();
+
+		if (num != 0) {//一回目かの判定
+			RList = (List<Recipe>) session.getAttribute("LL");
+			RList.addAll(LL);
+			session.setAttribute("LL", RList);
+		} else {
+			session.setAttribute("LL", LL);
+		}
+
+		num++;
+	}
+
+	List<Recipe> Rlist = (List<Recipe>) session.getAttribute("LL");
+
+	List<Favorite> flist;
+	if (user != null) {
+		flist = favoriteRepository.findByEmail(user.getEmail());
+		session.setAttribute("favorite", flist);
+
+	}
+
+
+
+	//session.setAttribute("FMenu", true);
+	mv.addObject("recipes", Rlist);
+	mv.addObject("mes", "お気に入り");
+
+
+	mv.setViewName("redirect:/favomenu");
+
+
+
+}
+
+
 		return mv;
 	}
 
@@ -246,10 +288,21 @@ System.out.println(fMenu);
 
 			List<Recipe> Rlist = (List<Recipe>) session.getAttribute("LL");
 
-			session.setAttribute("FMenu", true);
+			List<Favorite> flist;
+			if (user != null) {
+				flist = favoriteRepository.findByEmail(user.getEmail());
+				mv.addObject("favorite", flist);
+
+			}
+
+
+
+			//session.setAttribute("FMenu", true);
 			mv.addObject("recipes", Rlist);
 			mv.addObject("mes", "お気に入り");
-			mv.setViewName("recipeList");
+
+			session.setAttribute("page", true);
+			mv.setViewName("/recipeList");
 
 		}
 
