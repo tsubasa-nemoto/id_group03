@@ -23,6 +23,7 @@
 }
 
 header {
+
 	height: 65px;
 	background: #f7e880;
 }
@@ -286,7 +287,7 @@ h1.tie {
 #pic {
   position: relative;
   top:95px;
-  left:470px;
+  left:520px;
   display: inline-block;
   margin-bottom: 1em;
   font-size:2em;
@@ -328,7 +329,7 @@ h1.tie {
 #pic2 {
   position: relative;
   top:10px;
-  left:470px;
+  left:520px;
   display: inline-block;
   margin-bottom: 1em;
   font-size:2em;
