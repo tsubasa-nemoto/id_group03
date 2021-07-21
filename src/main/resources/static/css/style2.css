@@ -529,3 +529,26 @@ footer {
 	color: #fb4f4f;
 	transform: translateY(3px);
 }
+
+/*もっとみる*/
+.seeall {
+	position:relative;
+	top:15px;
+	left:68em;
+	font-family:'Noto Sans JP', sans-serif;
+}
+
+.seeall::after {
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin: 0 0.2em 0.1em;
+  content: '';
+  border-right: 0.14em solid #f5e94b;
+  border-bottom: 0.14em solid #f5e94b;
+  transform: rotate(-45deg);
+}
+
+.seeall:hover {
+  opacity: 0.6;
+}

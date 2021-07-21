@@ -46,6 +46,7 @@
     }
     .content4 {
         padding: 10px;
+        font-size:1px;
         color: #666;
         font-family:'Noto Sans JP', sans-serif;
     }
@@ -138,7 +139,7 @@
 
 .pager .pagination li.pre,
 .pager .pagination li.next{
-  background: #f5e94b;
+  background: #efdb27;
   color: #fff;
 }
 
