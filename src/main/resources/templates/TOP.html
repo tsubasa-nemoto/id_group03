@@ -92,10 +92,15 @@
 					<div class="swiper-wrapper">
 
 						<!-- 各スライド -->
-						<div class="swiper-slide" th:each="recipe:${session.Recipe}">
+						<div th:each="i: ${#numbers.sequence(0,4)}" class="swiper-slide">
+								<a th:href="@{'/'+${session.Recipe[__${i}__].dish}+'/details'}">
+									<img th:src="@{${'img/' + session.Recipe[__${i}__].image}}" />
+								</a>
+							</div>
+							<!-- <div class="swiper-slide" th:each="recipe:${session.Recipe}">
 							<a th:href="@{'/'+${recipe.dish}+'/details'}"> <img
 								th:src="@{${'img/' + recipe.image}}" /></a>
-						</div>
+						</div>-->
 					</div>
 					<!-- ページネーション -->
 					<div class="swiper-pagination swiper-pagination-black"></div>

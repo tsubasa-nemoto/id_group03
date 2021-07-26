@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AccountController {
+public class AccountController{
 	@Autowired
 	HttpSession session;
 
@@ -241,10 +242,11 @@ public class AccountController {
 
 	@RequestMapping("/main")
 	public ModelAndView top(ModelAndView mv) {
-		//ランダム要素の追加の検討
 		//DBから要素の取り出しセットを行う
-		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
+		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAllByOrderByDish();
 		List<Favorite> favorite=favoriteRepository.findAll();
+		Collections.shuffle(recipe);//リストをランダムに並び替え
+
 		session.setAttribute("favorite", favorite);
 		session.setAttribute("Frag",false);
 		session.setAttribute("Recipe", recipe);
@@ -253,6 +255,4 @@ public class AccountController {
 		mv.setViewName("top");
 		return mv;
 	}
-
-
 }

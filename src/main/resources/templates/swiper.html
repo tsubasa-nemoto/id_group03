@@ -2,9 +2,92 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<span th:replace="swiper"></span>
+	<title>swiper</title>
+	<style>
+	/*時間の円*/
+.pie {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top:-250px;
+	left:-50px;
+	margin: 100px auto;
+	width: 150px;
+	height: 150px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.pie::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 142px;
+	height: 142px;
+	border: 3px solid #ddd;
+	border-radius: 50%;
+	z-index: -2;
+}
+
+.pie::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	background-image: radial-gradient(#ffffff 65%, transparent 66%),conic-gradient(#f7e880 0% 60%, transparent 60% 100%);
+	border-radius: 50%;
+	z-index: -1;
+}
+
+	</style>
 </head>
 <body>
+
+<script>
+
+
+window.onload=function(){
+	var targetClass = getRuleBySelector('.pie');
+	alert("ページが読み込まれました！");
+	targetClass.style.backgroundImage.conicGradient = 'hsl(#f7e880 0% 30%, transparent 30% 100%)'
+		 ;
+}
+
+
+//指定セレクタのCSSルールを取得する
+//呼び出し例　getRuleBySelector(".inner1")   seleにCSSセレクタ
+function getRuleBySelector(sele){
+ var i, j, sheets, rules, rule = null;
+
+ // stylesheetのリストを取得
+ sheets = document.styleSheets;
+ for(i=0; i<sheets.length; i++){
+     // そのstylesheetが持つCSSルールのリストを取得
+     rules = sheets[i].cssRules;
+     for(j=0; j<rules.length; j++){
+         // セレクタが一致するか調べる
+         if(sele === rules[j].selectorText){
+             rule = rules[j];
+             break;
+         }
+     }
+ }
+ return rule;
+}
+</script>
+<h3 class="lv">Level</h3>
+				<br>
+				<h6 class="difficult" >easy👌</h6>
+
+				<div class="v_line_fix"></div>
+
+<div class="pie"><span>35min.</span></div>
 
 <!-- TOP th:replace用 -->
 
@@ -15,12 +98,14 @@
 			<div class="swiper-container mySwiper">
 
 				<!-- メイン表示部分 -->
-				<div class="swiper-wrapper">
 
 					<!-- 各スライド -->
+					<!--
+<div class="swiper-wrapper">
 					<div class="swiper-slide" th:each="recipe:${session.Recipe}">
 						<img th:src="@{${'img/' + recipe.image}}" />
 					</div>
+				</div>-->
 				</div>
 				<!-- ページネーション -->
 				<div class="swiper-pagination"></div>
