@@ -3,35 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
- <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
 </head>
 <body>
-<div class="form-wrapper">
+	<div class="form-wrapper">
 
-  <h1>Login</h1>
+		<h1>Login</h1>
 
-  <form action="/login" method="post">
-    <div class="form-id">
-      <label for="email"></label>
-      <input type="text" name="email" required="required" placeholder="Email Address"></input>
-    </div>
+		<form action="/login" method="post">
+			<div class="form-id">
+				<label for="email"></label> <input type="text" name="email"
+					required="required" placeholder="Email Address"></input>
+			</div>
 
-    <div class="form-id">
-      <label for="password"></label>
-      <input type="password" name="password" required="required" placeholder="Password"></input>
-    </div>
+			<div class="form-id">
+				<label for="password"></label> <input type="password"
+					name="password" required="required" placeholder="Password"></input>
+			</div>
 
-    <div class="button-panel">
-      <input type="submit" class="button" title="login" value="login"></input>
-    </div>
-    <br>
-    <span th:text="${message}" style="color:red"></span>
-  </form>
+			<div class="button-panel">
+				<input type="submit" class="button" title="login" value="login"></input>
+			</div>
+			<br> <span th:text="${message}" style="color: red"></span>
+		</form>
 
-  <div class="form-footer">
-    <p><a href="/signup">新規会員登録</a></p>
-    <p><a href="/password">パスワードを忘れた方</a></p>
-  </div>
-</div>
+		<div class="form-footer">
+			<p>
+				<a href="/signup">新規会員登録</a>
+			</p>
+			<p>
+				<a href="/password">パスワードを忘れた方</a>
+			</p>
+		</div>
+	</div>
+	<p class="form-footer">
+		<a href="/main">TOPページに戻る</a>
+	</p>
 </body>
 </html>

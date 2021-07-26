@@ -70,7 +70,6 @@ public class RecipeController {
 			recipeList = recipeRepository.findAll();//全件検索
 			mv.addObject("mes", "レシピ一覧");
 			session.setAttribute("mes", "レシピ一覧");
-			System.out.println(fMenu+"75");
 			}
 
 		else if (!dish.equals("")) {//nameが空白でないとき
@@ -80,7 +79,6 @@ public class RecipeController {
 			if (b == false) {//検索が一回目なら
 				session.setAttribute("searchResult", dish);
 				fMenu=false;
-				System.out.println(fMenu+"84");
 			}
 		}
 		mv.addObject("recipes", recipeList);
@@ -191,6 +189,10 @@ public class RecipeController {
 		}
 		Optional<Favorite> Fdish = favoriteRepository.findByDishAndEmail(dish, user.getEmail());
 		Favorite favo = Fdish.get();
+		List <Favorite>LList=favoriteRepository.findAll();
+
+		System.out.println(LList+"194");
+		session.setAttribute("favorite", LList);
 		session.setAttribute("fav", favo.getFav());
 		session.setAttribute("Frag", frg);
 		mv.setViewName("redirect:" + Return);

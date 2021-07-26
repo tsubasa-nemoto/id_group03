@@ -36,6 +36,7 @@ location.href="/login?prev="+ encodeURIComponent(location.href);
 			<li><a href="/favomenu" >お気に入り</a></li>
 			<li th:if="${session.userInfo==null}"><a href="#" onClick="login()">ログイン</a></li>
 			<li th:if="${session.userInfo!=null}"><a href="#" onClick="logout()">ログアウト</a></li>
+			<li th:if="${session.userInfo!=null}"><span th:text="${session.userInfo.name}+'でログイン中'"></span></li>
 		</ul>
 	</div>
 	<div class="hamburger-demo-cover"></div>

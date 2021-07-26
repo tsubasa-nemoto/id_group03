@@ -2,8 +2,6 @@ package com.example.demo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,14 +9,12 @@ import javax.persistence.Table;
 @Table(name="Users")
 public class Users {
 	//フィールド
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="code")
-	private Integer code;
+
 
 	@Column(name="name")
 	private String name;
 
+	@Id
 	@Column(name="email")
 	private String email;
 
@@ -36,22 +32,9 @@ public class Users {
 		this.password = password;
 	}
 
-	public Users(Integer code, String name, String email, String password) {
-		this.code = code;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-	}
 
 
 	//ゲッタ・セッタ
-	public Integer getCode() {
-		return code;
-	}
-
-	public void setCode(Integer code) {
-		this.code = code;
-	}
 
 	public String getName() {
 		return name;

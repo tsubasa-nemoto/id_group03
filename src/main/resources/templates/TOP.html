@@ -53,6 +53,8 @@
 						<li th:if="${session.userInfo!=null}"><a href="/favomenu">お気に入り</a></li>
 						<li th:if="${session.userInfo==null}"><a href="/login">ログイン</a></li>
 						<li th:if="${session.userInfo!=null}"><a href="/logout">ログアウト</a></li>
+						<li th:if="${session.userInfo!=null}">
+						<span th:text="${session.userInfo.name}+'でログイン中'"></span></li>
 					</ul>
 				</div>
 				<div class="hamburger-demo-cover"></div>
@@ -121,9 +123,9 @@
 			<div class="card-group2">
 
 				<div th:each="recipe:${session.Recipe}" class="card5">
-
+					<a th:href="${recipe.dish}+'/details'">
 					<img th:src="@{${'img/' + recipe.image}}" class="image5">
-					<p th:text="${recipe.dish}" class="title5"></p>
+					<p th:text="${recipe.dish}" class="title5"></p></a>
 					<p class="content5">お気に入り追加</p>
 					<a th:href="${recipe.dish}+'/favorite?prev='"
 						class="favorite3">
@@ -162,7 +164,7 @@
 				</div>
 			</div>
 
-			<a class="seeall" href="#">もっとみる</a>
+			<a class="seeall" href="/search">もっとみる</a>
 
 		</div>
 

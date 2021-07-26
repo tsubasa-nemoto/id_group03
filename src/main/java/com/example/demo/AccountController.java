@@ -165,17 +165,18 @@ public class AccountController {
 			@RequestParam("email") String mail,
 			@RequestParam("password") String password) {
 		ArrayList<Users> users = (ArrayList<Users>) usersRepository.findAll();
-		for (Users u : users) {
-			if (u.getEmail().equals(mail)) {//USERSに含まれるidと一致するものの検索
+		System.out.println(users);
+		for (Users u : users) {System.out.println(u.getEmail());
+			if (u.getEmail().equals(mail)) {//USERSに含まれるemailと一致するものの検索
 				String mes = "登録済みのメールアドレスです";
 				mv.addObject("message", mes);
-				mv.setViewName("singup");
+				mv.setViewName("signup");
+				return mv;
 			} else {
 				Users user = new Users(name, mail, password);
 				usersRepository.saveAndFlush(user);
 				mv.setViewName("/login");
 			}
-			return mv;
 
 		}
 		return mv;
@@ -227,9 +228,7 @@ public class AccountController {
 			String mail = (String) session.getAttribute("mail");
 			Optional<Users> record = usersRepository.findByEmail(mail);
 			//重複しないであろうアドレスでcodeを呼び出すための操作
-			Users user = record.get();
-			int code = user.getCode();
-			Users reuser = new Users(code, name, mail, pass1);
+			Users reuser = new Users(name, mail, pass1);
 			usersRepository.saveAndFlush(reuser);
 			mv.addObject("message", "パスワードの再登録が完了しました。");
 			mv.setViewName("login");
@@ -255,17 +254,5 @@ public class AccountController {
 		return mv;
 	}
 
-	@RequestMapping("/test")
-	public ModelAndView test(ModelAndView mv) {
-		ArrayList<Recipe> recipe = (ArrayList<Recipe>) recipeRepository.findAll();
 
-		session.setAttribute("Recipe", recipe);
-		//		session.setAttribute("URL2", "lime-juice.jpg");
-		//		session.setAttribute("URL3", "pumpkin-soup.jpg");
-		//		session.setAttribute("URL4", "small-salad.jpg");}
-		mv.addObject("URL", "pancake.jpg");
-		mv.addObject("recipe", recipe);
-		mv.setViewName("TEST01");
-		return mv;
-	}
 }
